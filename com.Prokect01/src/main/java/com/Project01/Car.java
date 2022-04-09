@@ -1,4 +1,4 @@
-package com.Prokect01;
+package com.Project01;
 
 @SuppressWarnings({ "all" })
 public class Car {
@@ -6,21 +6,21 @@ public class Car {
 	private String model;
 	private LargeEngine largeEngine;
 	
-	//parameters constructor
-	public Car(double odometer, String model, LargeEngine largeEngine) {
+
+	public Car(double odometer, String model) {
 		this.odometer = odometer;
 		this.model = model;
-		this.largeEngine = largeEngine;
+		this.largeEngine = new LargeEngine();
 	}
 	
-	//getter method
+	
 	public double getOdometer() {
 		return odometer;
 	}
 	
 	public void startEngine() {
+		System.out.println("Engine Started");
 		System.out.println("Model: " + this.model + " ");
-		largeEngine.start();
 	}
 
 }
