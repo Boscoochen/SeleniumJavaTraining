@@ -6,13 +6,11 @@ public class Car {
 	private String model;
 	private LargeEngine largeEngine;
 	
-
 	public Car(double odometer, String model) {
 		this.odometer = odometer;
 		this.model = model;
 		this.largeEngine = new LargeEngine();
 	}
-	
 	
 	public double getOdometer() {
 		return odometer;
