@@ -1,0 +1,63 @@
+Create a new branch called f-sql
+
+Sakila Database
+
+Write a SQL statement for each of the following. 
+
+1. Get 10 cities in descending alphabetical order.
+SELECT * 
+	FROM (SELECT * FROM city
+	ORDER BY RAND() LIMIT 10) temp
+	ORDER BY city DESC;
+
+2. Get all films with "airplane" in the title.
+SELECT * 
+	FROM FILM
+	WHERE title LIKE '%airplane%';
+
+3. Get the highest payment amount.
+SELECT MAX(amount) as highest_payment_amount
+	FROM payment;
+
+4. Get the number of records in the customer table for store id #1.
+SELECT COUNT(store_id) as number_of_records
+	FROM customer
+	WHERE store_id = 1;
+
+5. Get all payment records for customer with email address "NANCY.THOMAS@sakilacustomer.org"
+SELECT payment.* 
+	FROM customer, payment
+	WHERE customer.customer_id = payment.customer_id
+	AND email = 'NANCY.THOMAS@sakilacustomer.org';
+
+6. Use a View to get the film info for actor Bob Fawcett.
+SELECT temp2.film_info
+	FROM sakila.actor_info temp1, sakila.actor_info temp2
+	WHERE temp1.first_name = 'Bob' 
+	AND temp1.last_name = 'Fawcett' 
+	AND temp2.actor_id = temp1.actor_id;
+
+7. Use a Stored Procedure to get the 4 inventory ids for the film "Alien Center" at Store #2. 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `new_procedure`()
+BEGIN
+	SELECT inventory.inventory_id FROM 
+		inventory, film
+        		WHERE inventory.film_id = film.film_id AND film.title = 'Alien Center' AND inventory.store_id = 2;
+        
+END
+
+8. Insert a new store. Ensure that you use TRANSACTION. (This one is possible but it's tough! Pay attention to constraints and the order that you are inserting data.)
+START TRANSACTION;
+
+SET foreign_key_checks = 0;
+
+INSERT INTO store
+	VALUES(3,3,3,CURRENT_TIMESTAMP);
+
+9. Update the timestamp to the current date/time for the new store you entered in the previous question. 
+UPDATE store SET last_update = CURRENT_TIMESTAMP WHERE store_id = 3;
+
+10. Delete the new store. 
+DELETE FROM store WHERE store_id = 3;
+
+
