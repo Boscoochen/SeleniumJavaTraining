@@ -26,7 +26,7 @@ public class JavaIO {
 
 	@Test
 	public void testTwoHashMapAreEqualed() throws CsvValidationException, IOException {
-		HashMap<String, String> expectedMap = openCSVFileToReturnHashMao();
+		HashMap<String, String> expectedMap = openCSVFileToReturnHashMap();
 
 		HashMap<String, String> actualMap = new HashMap<String, String>();
 		actualMap.put("Streamer", "Warwick");
@@ -39,7 +39,7 @@ public class JavaIO {
 		Assert.assertEquals(actualMap, expectedMap, "Case Fail, two hashmaps are different");
 	}
 
-	public HashMap<String, String> openCSVFileToReturnHashMao() throws IOException, CsvValidationException {
+	public HashMap<String, String> openCSVFileToReturnHashMap() throws IOException, CsvValidationException {
 		ClassLoader classLoader = this.getClass().getClassLoader();
 		FileReader filereader = new FileReader(new File(classLoader.getResource("basses.csv").getFile()));
 		CSVReader csvReader = new CSVReader(filereader);
