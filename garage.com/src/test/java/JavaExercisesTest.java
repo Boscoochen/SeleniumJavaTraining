@@ -21,9 +21,12 @@ public class JavaExercisesTest {
 	public void compareTwoReferenceTypes() {
 		String str1String = new String("abc");
 		String str2String = new String("abc");
+		
 		boolean isEqual = false;
+		
 		str1String = str1String.intern();
 		str2String = str2String.intern();
+		
 		if (str1String == str2String) {
 			isEqual = true;
 		}
@@ -62,7 +65,7 @@ public class JavaExercisesTest {
 		String str1String = new String("ab");
 		String str2String = new String("abc");
 		boolean isEqual = false;
-		// either one condition is correct will set isEqual true
+		
 		if (number1 == number2 || str1String.equals(str2String)) {
 			isEqual = true;
 		}
@@ -74,7 +77,7 @@ public class JavaExercisesTest {
 		int number1 = 1000;
 		int number2 = 1000;
 		number1++;
-		number2--;
+		--number2;
 		Assert.assertEquals(number1, 1001, "post-increment case fail");
 		Assert.assertEquals(number2, 999, "pre-decrement case fail");
 	}
@@ -130,15 +133,17 @@ public class JavaExercisesTest {
 	@Test
 	public void tryCatchCase() {
 		boolean check = false;
+		int result = 0;
+		int num1 = 3;
+		int num2 = 0;
 		try {
-			// because thread sleep throws InterruptedException
-			Thread.sleep(1000);
+			result = num1 / num2;
 			check = true;
-
-		} catch (InterruptedException e) {
+		}catch (ArithmeticException e) {
 			System.out.println(e.getMessage());
 		}
-		assertEquals(true, check, "tryCatchCaseFail");
+		
+		assertEquals(false, check, "tryCatchCaseFail");
 	}
 
 	@Test
