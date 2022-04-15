@@ -1,29 +1,22 @@
+import static org.testng.Assert.assertEquals;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class NewTest {
-	/**
-	 * 1.Compare two value types using the == operator
-	 */
+public class JavaExercisesTest {
+
 	@Test
 	public void compareTwoValueTypes() {
 		int number1 = 1000;
 		int number2 = 1000;
-		boolean isEqual = false;
-		//if two numbers is equal, set isEqual true
-		if (number1 == number2) {
-			isEqual = true;
-		}
-		
+		boolean isEqual = number1 == number2;
+
 		Assert.assertEquals(isEqual, true, "These two numbers are not equal~");
 	}
-	
-	/**
-	 * 2.Compare two reference types using the == operator
-	 */
+
 	@Test
 	public void compareTwoReferenceTypes() {
 		String str1String = new String("abc");
@@ -31,31 +24,24 @@ public class NewTest {
 		boolean isEqual = false;
 		str1String = str1String.intern();
 		str2String = str2String.intern();
-		if(str1String == str2String) { 
+		if (str1String == str2String) {
 			isEqual = true;
 		}
 
 		Assert.assertEquals(isEqual, true, "These two Strings are not equal~");
 	}
-	
-	/**
-	 * 3.Compare two reference types using .equals()
-	 */
+
 	@Test
 	public void compareTwoReferenceTypesUseEquals() {
 		String str1String = new String("abc");
 		String str2String = new String("abc");
 		boolean isEqual = false;
-		if(str1String.equals(str2String)) { 
+		if (str1String.equals(str2String)) {
 			isEqual = true;
 		}
 		Assert.assertEquals(isEqual, true, "These two Strirgs are not equal~");
 	}
-	
-	
-	/**
-	 * 4. Demonstrate the logical AND operator
-	 */
+
 	@Test
 	public void logicalAndOperator() {
 		int number1 = 1000;
@@ -63,15 +49,12 @@ public class NewTest {
 		String str1String = new String("abc");
 		String str2String = new String("abc");
 		boolean isEqual = false;
-		if(number1 == number2 && str1String.equals(str2String)) { 
+		if (number1 == number2 && str1String.equals(str2String)) {
 			isEqual = true;
 		}
 		Assert.assertEquals(isEqual, true, "logicalAndOperator case fail~");
 	}
-	
-	/**
-	 * 5. Demonstrate the logical AND operator
-	 */
+
 	@Test
 	public void logicalOrOperator() {
 		int number1 = 1000;
@@ -79,16 +62,13 @@ public class NewTest {
 		String str1String = new String("ab");
 		String str2String = new String("abc");
 		boolean isEqual = false;
-		//either one condition is correct will set isEqual true
-		if(number1 == number2 || str1String.equals(str2String)) { 
+		// either one condition is correct will set isEqual true
+		if (number1 == number2 || str1String.equals(str2String)) {
 			isEqual = true;
 		}
 		Assert.assertEquals(isEqual, true, "logicalOrOperator case fail~");
 	}
-	
-	/**
-	 * 6.Demonstrate unary post-increment and unary pre-decrement operators
-	 */
+
 	@Test
 	public void incrementAndDecrementOperators() {
 		int number1 = 1000;
@@ -98,82 +78,81 @@ public class NewTest {
 		Assert.assertEquals(number1, 1001, "post-increment case fail");
 		Assert.assertEquals(number2, 999, "pre-decrement case fail");
 	}
-	
-	/**
-	 * 7. Change a boolean variable with the value of True to False using !
-	 */
+
 	@Test
 	public void booleanVariable() {
 		boolean isTrue = true;
 		Assert.assertEquals(!isTrue, false, "change true to false using ! case fail");
 	}
-	
-	/**
-	 * 8. Use 2 IF statements (no elses)
-	 */
+
 	@Test
 	public void ifStatements() {
 		boolean isTrue = true;
-		if(isTrue) {
-			System.out.println("into first if statement");
+		boolean check = false;
+		if (isTrue) {
+			check = true;
 		}
-		if(!isTrue) {
-			System.out.println("into second if statement");
+		if (!isTrue) {
+			check = false;
 		}
+		Assert.assertEquals(true, check, "ifStatementsFail");
 	}
-	
-	/**
-	 * 9. Use IF/Else statements
-	 */
+
 	@Test
 	public void ifElseStatements() {
-		boolean isTrue = true;
-		if(isTrue) {
-			System.out.println("into first if statement");
-		}else {
-			System.out.println("into else statement");
+		boolean isTrue = false;
+		boolean check = true;
+		if (isTrue) {
+			check = false;
+		} else {
+			check = true;
 		}
+		assertEquals(true, check, "ifElseStatementsFail");
 	}
-	
-	/**
-	 * 10. Use a nested For loop
-	 */
+
 	@Test
 	public void nestedForLoop() {
-		for(int i = 0; i < 5; i++) {
-			for(int j = 0; j < 5; j++) {
-				System.out.println(i + " " + j);
+		int[] unSortedArr = { 3, -1, -2, 0, 5 };
+		for (int i = 0; i < unSortedArr.length; i++) {
+			for (int j = 0; j < unSortedArr.length - i - 1; j++) {
+				if (unSortedArr[j] > unSortedArr[j + 1]) {
+					int temp = unSortedArr[j];
+					unSortedArr[j] = unSortedArr[j + 1];
+					unSortedArr[j + 1] = temp;
+				}
 			}
 		}
+
+		int[] sortedArr = { -2, -1, 0, 3, 5 };
+		Assert.assertEquals(sortedArr, unSortedArr, "nestedForLoopFail");
 	}
-	
-	/**
-	 * 11. Demonstrate a try/catch (unsure that you are throwing an exception in the try
-	 */
+
 	@Test
 	public void tryCatchCase() {
+		boolean check = false;
 		try {
-			//let thread sleep 1 second
+			// because thread sleep throws InterruptedException
 			Thread.sleep(1000);
-		}catch (InterruptedException e) {
+			check = true;
+
+		} catch (InterruptedException e) {
 			System.out.println(e.getMessage());
 		}
+		assertEquals(true, check, "tryCatchCaseFail");
 	}
-	
-	/**
-	 * 12. Demonstrate a FOREACH loop. first create an arrayList of strings then print each string using a fOREACH loop
-	 */
+
 	@Test
 	public void forEachLoopCase() {
 		ArrayList<String> arraylist = new ArrayList<String>();
 		arraylist.add("Hello");
 		arraylist.add("World");
 		arraylist.add("!!");
+
+		String[] actualStringArray = { "Hello", "World", "!!" };
+		int i = 0;
 		for (String string : arraylist) {
-			System.out.println(string);
+			Assert.assertEquals(actualStringArray[i++], string, "forEachLoopCaseFail");
 		}
 	}
-	
-	
-}
 
+}
