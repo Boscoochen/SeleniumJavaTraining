@@ -51,6 +51,8 @@ UPDATE store SET manager_staff_id = 3 WHERE store_id = 3;
     
 INSERT INTO store(store_id, manager_staff_id, address_id, last_update)
 		VALUES(2,2,2,'2006-02-15 04:57:12');
+		
+UPDATE staff SET store_id = 2, last_update='2006-02-15 04:57:12' WHERE staff_id = 2;
 
 ROLLBACK;
 
