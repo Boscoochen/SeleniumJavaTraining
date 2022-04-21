@@ -5,10 +5,8 @@ Sakila Database
 Write a SQL statement for each of the following. 
 
 1. Get 10 cities in descending alphabetical order.
-SELECT * 
-	FROM (SELECT * FROM city
-	ORDER BY RAND() LIMIT 10) temp
-	ORDER BY city DESC;
+SELECT city FROM city
+		ORDER BY city DESC LIMIT 10;
 
 2. Get all films with "airplane" in the title.
 SELECT * 
@@ -25,34 +23,36 @@ SELECT COUNT(store_id) as number_of_records
 	WHERE store_id = 1;
 
 5. Get all payment records for customer with email address "NANCY.THOMAS@sakilacustomer.org"
-SELECT payment.* 
-	FROM customer, payment
-	WHERE customer.customer_id = payment.customer_id
-	AND email = 'NANCY.THOMAS@sakilacustomer.org';
+SELECT p.*
+		FROM payment AS p
+        JOIN customer AS c ON c.customer_id = p.customer_id
+        WHERE c.email = 'NANCY.THOMAS@sakilacustomer.org';
 
 6. Use a View to get the film info for actor Bob Fawcett.
-SELECT temp2.film_info
-	FROM sakila.actor_info temp1, sakila.actor_info temp2
-	WHERE temp1.first_name = 'Bob' 
-	AND temp1.last_name = 'Fawcett' 
-	AND temp2.actor_id = temp1.actor_id;
+SELECT * FROM film_list
+		WHERE actors LIKE '%BOB FAWCETT%';
 
 7. Use a Stored Procedure to get the 4 inventory ids for the film "Alien Center" at Store #2. 
-CREATE DEFINER=`root`@`localhost` PROCEDURE `new_procedure`()
-BEGIN
-	SELECT inventory.inventory_id FROM 
-		inventory, film
-        		WHERE inventory.film_id = film.film_id AND film.title = 'Alien Center' AND inventory.store_id = 2;
-        
-END
+SET @filmid = (SELECT f.film_id
+	FROM film AS f
+		WHERE f.title = 'Alien Center');
+SET @filmCount = 0;
+CALL film_in_stock(@filmid, 2, @filmCount);
 
 8. Insert a new store. Ensure that you use TRANSACTION. (This one is possible but it's tough! Pay attention to constraints and the order that you are inserting data.)
 START TRANSACTION;
 
-SET foreign_key_checks = 0;
+UPDATE store SET store_id = 3, address_id = 3, last_update = current_timestamp() WHERE manager_staff_id = 2;
+        
+INSERT INTO staff
+	VALUES(3,'smith','johnson',5,null, 'smith.johnson@sakilastaff.com', 3, 1, 'smith', MD5('123'), current_timestamp());
 
-INSERT INTO store
-	VALUES(3,3,3,CURRENT_TIMESTAMP);
+UPDATE store SET manager_staff_id = 3 WHERE store_id = 3;
+    
+INSERT INTO store(store_id, manager_staff_id, address_id, last_update)
+		VALUES(2,2,2,'2006-02-15 04:57:12');
+
+ROLLBACK;
 
 9. Update the timestamp to the current date/time for the new store you entered in the previous question. 
 UPDATE store SET last_update = CURRENT_TIMESTAMP WHERE store_id = 3;
