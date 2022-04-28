@@ -1,0 +1,27 @@
+1. Write the xpath that will return the ‘Full Name’textbox using the ID attribute. Hint: This element has the ‘input’tag.
+$x("//*[@id=\"username\"]/@placeholder")[0].textContent
+
+
+2. Write the xpath that will return all elements on the page with the ‘button’tag.
+$x("//*[@type=\"button\"]")
+
+
+3. Write the xpath that will return the div with text of ‘Vega’. Ensure to narrow the scope of your xpath to the ReactTableandensure that your xpath is limited to returningcells only. Cells in this table have the class ‘rt-td’. Hint: You must use “Vega”in your xpath.
+
+$x("//*[@id=\"app\"]//div[text()=\"Vega\"]")[0].textContent
+
+
+4. Write the xpath that will return the parent element for the radio button with id=’impressiveRadio’.
+$x("//*[@id=\"impressiveRadio\"]/..")
+
+
+5. Write the xpath that will return all DIV ancestors for the radio button with id=’impressiveRadio’.
+$x("//*[@id=\"impressiveRadio\"]//ancestor::div")
+
+
+6. Write the xpath that will return the sibling for the radio button with id=’impressiveRadio’. Do not use the sibling axes. Navigate to the parent element then down to the siblinginstead.
+$x("//*[@id=\"impressiveRadio\"]/../descendant::*")
+
+
+7. Write the xpath that will return all buttons containing the value “Click”.
+$x("//button[@type = 'button' and contains(., 'Click')]")

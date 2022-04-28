@@ -1,0 +1,28 @@
+1. Write a selector that will return the ‘Full Name’ textbox using the ID attribute. Hint: This element has the ‘input’ tag.
+$('#userName').attr('placeholder');
+
+
+2. Write a selector that will return all 3 buttons shown below.
+$("[type=\"button\"]")[1]
+$("[type=\"button\"]")[2]
+$("[type=\"button\"]")[3]
+
+
+3. Write a selector that will return the span element in the footer
+$("#app > footer > span").text()
+
+
+4. Write a selector that will return the 3 listitem elementsin the unordered list.
+$("#nav > li > a").text()
+
+
+5. Write a selector that will get the option elementwhere value = 4.
+$("#withOptGroup > div > div.css-1hwfws3, div.css-1uccc91-singleValue:last-child").text()
+
+
+6. Write the JavaScript to getthe value forthe element with id=sliderValue.
+document.getElementById("sliderValue").getAttribute("value")
+
+
+7.  Write the JavaScript to seet the value for the element with id=username.
+document.getElementById("userName").id = "username"
