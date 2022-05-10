@@ -4,17 +4,21 @@ import org.openqa.selenium.WebElement;
 
 import framework.ControlExtensionBase;
 
-public class RadioButtonExtension extends ControlExtensionBase {
-
-	public RadioButtonExtension(WebElement element) {
-		super(element);
-		// TODO Auto-generated constructor stub
-		selectButton();
-	}
+public class HyperLinkControlExtension extends ControlExtensionBase{
 
 	
-	//need to change to select 
-	public void selectButton() {
+	
+	
+	public HyperLinkControlExtension(WebElement element) {
+		super(element);
+		// TODO Auto-generated constructor stub
+		click();
+	}
+
+	public void click() {
 		super.wrappedElement.click();
 	}
+	
+	
+
 }

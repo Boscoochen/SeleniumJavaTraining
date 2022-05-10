@@ -6,6 +6,7 @@ import org.testng.annotations.Test;
 
 import framework.SeleniumTestBase;
 import page.buttonpage;
+import page.hyperlinkpage;
 
 public class ControlExtensionTests extends SeleniumTestBase{
 	@Test
@@ -48,5 +49,18 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 //		System.out.println(selectNo);
 		assertEquals(selectNo, no);
+	}
+	
+	@Test
+	public void canClickOnHyperLink() {
+		String actualResult =  "Link has responded with staus 401 and status text Unauthorized";
+		
+		String expectedResultString = new hyperlinkpage(this.getDriver())
+				.navigate()
+				.clickOnLink()
+				.getLinkResultValue();
+		
+		assertEquals(expectedResultString, actualResult);
+
 	}
 }

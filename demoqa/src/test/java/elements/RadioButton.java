@@ -16,7 +16,7 @@ public class RadioButton extends RadioGroup {
 	}
 
 	public RadioGroup select(String label) {
-		radioButtonExtension.selectButton(label);
+		radioButtonExtension.selectButton();
 		return new RadioGroup(this.getDriver());
 	}
 }
