@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 import framework.SeleniumTestBase;
 import page.buttonpage;
 import page.hyperlinkpage;
+import page.sliderpage;
 
 public class ControlExtensionTests extends SeleniumTestBase{
 	@Test
@@ -63,4 +64,54 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		assertEquals(expectedResultString, actualResult);
 
 	}
+	
+	@Test
+	public void selectSliderValueTo80() throws InterruptedException {
+		int actualValue = 80;
+		int expectedValue = new sliderpage(this.getDriver())
+				.navigate()
+				.getSlider()
+				.setValue(actualValue);
+		
+		System.out.println(expectedValue);
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	public void selectSliderValueTo17() throws InterruptedException {
+		int actualValue = 17;
+		int expectedValue = new sliderpage(this.getDriver())
+				.navigate()
+				.getSlider()
+				.setValue(actualValue);
+		
+		System.out.println(expectedValue);
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	public void selectSliderValueTo0() throws InterruptedException {
+		int actualValue = 0;
+		int expectedValue = new sliderpage(this.getDriver())
+				.navigate()
+				.getSlider()
+				.setValue(actualValue);
+		
+		System.out.println(expectedValue);
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	public void selectSliderValueTo100() throws InterruptedException {
+		int actualValue = 100;
+		int expectedValue = new sliderpage(this.getDriver())
+				.navigate()
+				.getSlider()
+				.setValue(actualValue);
+		
+		System.out.println(expectedValue);
+		assertEquals(expectedValue, actualValue);
+	}
+	
+	
 }
