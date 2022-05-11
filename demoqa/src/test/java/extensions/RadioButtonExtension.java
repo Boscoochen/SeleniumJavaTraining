@@ -21,7 +21,6 @@ public class RadioButtonExtension extends ControlExtensionBase {
 				throw new RuntimeException("the label button '" + this.getValue() + "' not clicked");
 			}
 		}else if(label.equals("No")) {
-			//No label button was selected, but not sure how to display You have select "You have selected Impressive" text
 			if(!this.getValue().equals(label)) {
 				System.out.println("No label button need to be clicked");
 			}
@@ -39,7 +38,6 @@ public class RadioButtonExtension extends ControlExtensionBase {
 			}
 		}
 
-		//enable No button
 		if(label.equals("No")) {
 			JavascriptExecutor js = (JavascriptExecutor) driver;  
 			js.executeScript("document.getElementById(\"noRadio\").disabled=false;");
