@@ -1,6 +1,8 @@
 package extensions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+
+import bsh.This;
 import framework.ControlExtensionBase;
 
 public class selectMenuControlExtension extends ControlExtensionBase {
@@ -13,6 +15,9 @@ public class selectMenuControlExtension extends ControlExtensionBase {
 	public void selectColor(String colorIndex) {
 		Select select = new Select(this.wrappedElement);
 		select.selectByValue(colorIndex);
+		if(!colorIndex.equals(this.getColorValue())) {
+			throw new RuntimeException("the color index you want to click is '" + colorIndex + "' Actual label you clicked is '" + this.getColorValue() + "'");
+		}
 	}
 
 	public String getColorValue() {

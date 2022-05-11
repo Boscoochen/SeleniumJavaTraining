@@ -9,7 +9,7 @@ public class RadioGroup extends buttonpage {
 	@FindBy(xpath="//*[@id=\"app\"]//div/label")
 	private List<WebElement> elements;
 	
-	public WebElement getElement;
+	protected WebElement getElement;
 	
 	public RadioGroup(WebDriver driver, WebElement getElement) {
 		super(driver);
@@ -17,12 +17,7 @@ public class RadioGroup extends buttonpage {
 	}
 
 	public RadioButton getButton(String label) {
-		for (WebElement webElement : elements) {
-			if(label.equals(webElement.getText())) {
-				this.getElement = webElement;
-			}
-		}
-		getControlExtensionFactory().getRadioButton(this.getElement);
+		this.getElement = getControlExtensionFactory().getRadioButton(this.getElement).findButton(label, elements, getDriver());
 		return new RadioButton(this.getDriver(), this.getElement);
 	}
 

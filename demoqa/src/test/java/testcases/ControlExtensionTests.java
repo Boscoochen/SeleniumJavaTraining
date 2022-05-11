@@ -15,7 +15,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String selectYes = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(yes)
-				.select()
+				.select("Yes")
 				.getSelected();
 				
 		assertEquals(selectYes, yes);
@@ -28,7 +28,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String selectImpressive = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(impressive)
-				.select()
+				.select("Impressive")
 				.getSelected();
 
 		assertEquals(selectImpressive, impressive);
@@ -41,7 +41,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String selectNo = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(no)
-				.select()
+				.select("No")
 				.getSelected();
 
 		assertEquals(selectNo, no);
@@ -53,7 +53,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 		String expectedResultString = new hyperlinkpage(this.getDriver())
 				.navigate()
-				.clickOnLink()
+				.clickOnLink("Unauthorized")
 				.getLinkResultValue();
 		
 		assertEquals(expectedResultString, actualResult);

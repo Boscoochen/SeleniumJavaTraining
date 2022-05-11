@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 
+import bsh.This;
 import framework.ControlExtensionBase;
 
 public class sliderControlExtension extends ControlExtensionBase {
@@ -14,6 +15,10 @@ public class sliderControlExtension extends ControlExtensionBase {
 	}
 
 	public void setValue(int value, WebDriver webDriver) {
+		if(!(value == 80 || value == 0 || value == 100 || value == 17)) {
+			throw new RuntimeException("this test case can only set slider range value (80, 17, 0, 100)");
+		}
+		
 		Actions move = new Actions(webDriver);
 		if(value == 80) {
 			action = (Action) move.dragAndDropBy(this.wrappedElement, 180, 0).build(); 
@@ -24,7 +29,11 @@ public class sliderControlExtension extends ControlExtensionBase {
 		}else if(value == 100) {
 			action = (Action) move.dragAndDropBy(this.wrappedElement, 300, 0).build();
 		}
-        action.perform();	
+        action.perform();
+        
+        if(!(value == this.getValue(this.wrappedElement))) {
+			throw new RuntimeException("the slider value you want to set is '" + value + "' Actual slider value was '" + this.getValue(this.wrappedElement) + "'");
+        }
 	}
 	
 	public int getValue(WebElement element) {

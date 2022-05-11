@@ -15,8 +15,8 @@ public class HyperLink extends hyperlinkpage{
 		super(driver);
 	}
 
-	public HyperLink clickOnLink() {
-		getControlExtensionFactory().getHyperLink(linkElement).selectLink();
+	public HyperLink clickOnLink(String linkName) {
+		getControlExtensionFactory().getHyperLink(linkElement).selectLink(linkName);
 		return this;
 	}
 	

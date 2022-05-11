@@ -7,8 +7,8 @@ public class RadioButton extends RadioGroup {
 		super(driver, getElement);
 	}
 
-	public RadioGroup select() {
-		getControlExtensionFactory().getRadioButton(getElement).selectButton();
+	public RadioGroup select(String label) {
+		getControlExtensionFactory().getRadioButton(getElement).selectButton(label, this.getDriver());
 		return new RadioGroup(this.getDriver(), getElement);
 	}
 }
