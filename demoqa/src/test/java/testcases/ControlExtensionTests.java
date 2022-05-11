@@ -19,11 +19,10 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 		String selectYes = new buttonpage(this.getDriver())
 				.navigate()
-				.getButton(0)
-				.select(yes)
+				.getButton(yes)
+				.select()
 				.getSelected();
-		
-//		System.out.println(selectYes);
+				
 		assertEquals(selectYes, yes);
 	}
 	
@@ -33,8 +32,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 		String selectImpressive = new buttonpage(this.getDriver())
 				.navigate()
-				.getButton(1)
-				.select(impressive)
+				.getButton(impressive)
+				.select()
 				.getSelected();
 		
 //		System.out.println(selectImpressive);
@@ -47,8 +46,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 		String selectNo = new buttonpage(this.getDriver())
 				.navigate()
-				.getButton(2)
-				.select(no)
+				.getButton(no)
+				.select()
 				.getSelected();
 		
 //		System.out.println(selectNo);

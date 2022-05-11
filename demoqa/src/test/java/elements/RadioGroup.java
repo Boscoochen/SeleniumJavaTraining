@@ -14,18 +14,24 @@ public class RadioGroup extends PageObjectBase {
 	
 	@FindBy(xpath="//*[@id=\"app\"]//div/label")
 	private List<WebElement> elements;
-	
+	WebElement getElement = null;
 	public RadioGroup(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub
 	}
 
-	public RadioButton getButton(int i) {
+	public RadioButton getButton(String label) {
 		//1.need to find the button element first
 //		List<WebElement> element = this.getDriver().findElements(By.xpath("//*[@id=\"app\"]//div/label"));
 //		System.out.println("=======" + element.get(2).getText());
 		//2.wrap up
-		radioButtonExtension = new RadioButtonExtension(elements.get(i));
+		
+		for (WebElement webElement : elements) {
+			if(label.equals(webElement.getText())) {
+				getElement = webElement;
+			}
+		}
+		radioButtonExtension = new RadioButtonExtension(getElement);
 		return new RadioButton(this.getDriver());
 	}
 

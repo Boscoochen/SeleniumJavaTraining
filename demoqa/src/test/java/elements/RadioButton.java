@@ -15,7 +15,7 @@ public class RadioButton extends RadioGroup {
 		// TODO Auto-generated constructor stub
 	}
 
-	public RadioGroup select(String label) {
+	public RadioGroup select() {
 		radioButtonExtension.selectButton();
 		return new RadioGroup(this.getDriver());
 	}

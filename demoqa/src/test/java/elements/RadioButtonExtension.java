@@ -9,7 +9,6 @@ public class RadioButtonExtension extends ControlExtensionBase {
 	public RadioButtonExtension(WebElement element) {
 		super(element);
 		// TODO Auto-generated constructor stub
-		selectButton();
 	}
 
 	
