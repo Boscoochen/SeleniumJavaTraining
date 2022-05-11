@@ -1,11 +1,9 @@
 package extensions;
 import java.util.List;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import framework.ControlExtensionBase;
 
 public class RadioButtonExtension extends ControlExtensionBase {
@@ -28,7 +26,6 @@ public class RadioButtonExtension extends ControlExtensionBase {
 				System.out.println("No label button need to be clicked");
 			}
 		}
-		
 	}
 
 	public WebElement findButton(String label, List<WebElement> elements, WebDriver driver) {

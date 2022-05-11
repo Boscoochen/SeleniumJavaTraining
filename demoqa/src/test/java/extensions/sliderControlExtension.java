@@ -3,8 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-
-import bsh.This;
 import framework.ControlExtensionBase;
 
 public class sliderControlExtension extends ControlExtensionBase {
@@ -39,6 +37,4 @@ public class sliderControlExtension extends ControlExtensionBase {
 	public int getValue(WebElement element) {
 		return Integer.parseInt(element.getAttribute("value"));
 	}
-	
-
 }

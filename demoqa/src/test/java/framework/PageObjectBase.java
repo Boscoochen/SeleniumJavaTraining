@@ -1,9 +1,7 @@
 package framework;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-
 import extensions.controlextensionfactory_.ControlExtensionFactory;
-
 
 public abstract class PageObjectBase {
 	private WebDriver driver;

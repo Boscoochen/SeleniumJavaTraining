@@ -1,10 +1,7 @@
 package elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.support.FindBy;
-import extensions.sliderControlExtension;
-import framework.PageObjectBase;
 import page.sliderpage;
 
 public class Slider extends sliderpage{
@@ -23,5 +20,4 @@ public class Slider extends sliderpage{
 	public int getValue() {
 		return getControlExtensionFactory().getSlider(sliderElement).getValue(sliderElement);
 	}
- 
 }

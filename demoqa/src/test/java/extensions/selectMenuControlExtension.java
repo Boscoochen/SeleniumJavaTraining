@@ -1,12 +1,9 @@
 package extensions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
-
-import bsh.This;
 import framework.ControlExtensionBase;
 
 public class selectMenuControlExtension extends ControlExtensionBase {
-
 	public selectMenuControlExtension(WebElement element) {
 		super(element);
 		this.wrappedElement = element;
@@ -28,5 +25,4 @@ public class selectMenuControlExtension extends ControlExtensionBase {
 		String colorValueArray[] = this.wrappedElement.getText().split("\n");
 		return colorValueArray;
 	}
-
 }
