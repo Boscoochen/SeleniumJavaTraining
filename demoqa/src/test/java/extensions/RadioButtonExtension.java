@@ -1,6 +1,5 @@
 package extensions;
 import org.openqa.selenium.WebElement;
-
 import framework.ControlExtensionBase;
 
 public class RadioButtonExtension extends ControlExtensionBase {

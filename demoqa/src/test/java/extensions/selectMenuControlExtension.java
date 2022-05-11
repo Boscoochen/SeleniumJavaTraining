@@ -10,13 +10,13 @@ public class selectMenuControlExtension extends ControlExtensionBase {
 		this.wrappedElement = element;
 	}
 
-	public void selectColor() {
+	public void selectColor(String colorIndex) {
 		Select select = new Select(this.wrappedElement);
-		select.selectByValue("4");
+		select.selectByValue(colorIndex);
 	}
 
-	public int getColorValue() {
-		return Integer.parseInt(this.wrappedElement.getAttribute("value"));
+	public String getColorValue() {
+		return this.wrappedElement.getAttribute("value");
 	}
 
 	public String[] getAllColorValue() {

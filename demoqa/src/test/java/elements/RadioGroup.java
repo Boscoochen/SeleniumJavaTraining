@@ -3,32 +3,30 @@ import java.util.List;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import extensions.RadioButtonExtension;
-import framework.PageObjectBase;
+import page.buttonpage;
 
-public class RadioGroup extends PageObjectBase {
-	protected static RadioButtonExtension radioButtonExtension;
-	
+public class RadioGroup extends buttonpage {
 	@FindBy(xpath="//*[@id=\"app\"]//div/label")
 	private List<WebElement> elements;
 	
-	WebElement getElement = null;
+	public WebElement getElement;
 	
-	public RadioGroup(WebDriver driver) {
+	public RadioGroup(WebDriver driver, WebElement getElement) {
 		super(driver);
+		this.getElement = getElement;
 	}
 
 	public RadioButton getButton(String label) {
 		for (WebElement webElement : elements) {
 			if(label.equals(webElement.getText())) {
-				getElement = webElement;
+				this.getElement = webElement;
 			}
 		}
-		radioButtonExtension = new RadioButtonExtension(getElement);
-		return new RadioButton(this.getDriver());
+		getControlExtensionFactory().getRadioButton(this.getElement);
+		return new RadioButton(this.getDriver(), this.getElement);
 	}
 
 	public String getSelected() {
-		return radioButtonExtension.getValue();
+		return getControlExtensionFactory().getRadioButton(this.getElement).getValue();
 	}
 }

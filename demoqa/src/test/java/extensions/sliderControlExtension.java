@@ -7,7 +7,7 @@ import org.openqa.selenium.interactions.Actions;
 import framework.ControlExtensionBase;
 
 public class sliderControlExtension extends ControlExtensionBase {
-	static Action action;
+	private static Action action;
 	public sliderControlExtension(WebElement element) {
 		super(element);
 		this.wrappedElement = element;

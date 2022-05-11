@@ -5,28 +5,23 @@ import org.openqa.selenium.support.FindBy;
 import extensions.selectMenuControlExtension;
 import page.selectmenupage;
 
-public class SelectMenu extends selectmenupage{
-	WebElement element;
-	
+public class SelectMenu extends selectmenupage{	
 	@FindBy(id="oldSelectMenu")
 	private WebElement selectMenuElement;
-	
 	public SelectMenu(WebDriver driver) {
 		super(driver);
 	}
 	
-	public SelectMenu selectColor() {
-		new selectMenuControlExtension(selectMenuElement).selectColor();
+	public SelectMenu selectColor(String colorIndex) {
+		getControlExtensionFactory().getSelectMenu(selectMenuElement).selectColor(colorIndex);
 		return this;
 	}
 	
-	public int getSelectMenuValue() {
-		return new selectMenuControlExtension(selectMenuElement).getColorValue();
+	public String getSelectMenuValue() {
+		return getControlExtensionFactory().getSelectMenu(selectMenuElement).getColorValue();
 	}
 	
 	public String[] getAllSelectMenuValue() {
-		return new selectMenuControlExtension(selectMenuElement).getAllColorValue();
+		return getControlExtensionFactory().getSelectMenu(selectMenuElement).getAllColorValue();
 	}
-	
-
 }

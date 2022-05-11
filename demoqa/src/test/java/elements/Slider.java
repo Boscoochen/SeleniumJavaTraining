@@ -5,11 +5,9 @@ import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.support.FindBy;
 import extensions.sliderControlExtension;
 import framework.PageObjectBase;
+import page.sliderpage;
 
-public class Slider extends PageObjectBase{
-	WebElement element;
-	Action action;
-	
+public class Slider extends sliderpage{
 	@FindBy(xpath="//*[@id=\"sliderContainer\"]/div[1]/span/input")
 	private WebElement sliderElement;
 	
@@ -18,13 +16,12 @@ public class Slider extends PageObjectBase{
 	}
 	
 	public Slider setValue(int value) {
-		
-		new sliderControlExtension(sliderElement).setValue(value, getDriver());
+		getControlExtensionFactory().getSlider(sliderElement).setValue(value, getDriver());
 		return this;
 	}
 	
 	public int getValue() {
-		return new sliderControlExtension(sliderElement).getValue(sliderElement);
+		return getControlExtensionFactory().getSlider(sliderElement).getValue(sliderElement);
 	}
  
 }

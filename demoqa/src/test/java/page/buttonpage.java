@@ -11,6 +11,6 @@ public class buttonpage extends PageObjectBase{
 	
 	public RadioGroup navigate() {
 		super.getDriver().get(URL);
-		return new RadioGroup(this.getDriver());
+		return new RadioGroup(this.getDriver(), null);
 	}
 }

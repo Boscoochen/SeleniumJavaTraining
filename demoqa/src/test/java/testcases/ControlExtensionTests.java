@@ -105,10 +105,10 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	
 	@Test
 	public void selectMenuPurple() {
-		int actualColorIndex = 4;
-		int expectedColorIndex = new selectmenupage(this.getDriver())
+		String actualColorIndex = "4";
+		String expectedColorIndex = new selectmenupage(this.getDriver())
 				.navigate()
-				.selectColor()
+				.selectColor("4")
 				.getSelectMenuValue();
 		
 		assertEquals(expectedColorIndex, actualColorIndex);

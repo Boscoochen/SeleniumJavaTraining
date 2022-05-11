@@ -2,10 +2,9 @@ package elements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import extensions.HyperLinkControlExtension;
-import framework.PageObjectBase;
+import page.hyperlinkpage;
 
-public class HyperLink extends PageObjectBase{
+public class HyperLink extends hyperlinkpage{
 	@FindBy(id="unauthorized")
 	private WebElement linkElement;
 	
@@ -17,11 +16,11 @@ public class HyperLink extends PageObjectBase{
 	}
 
 	public HyperLink clickOnLink() {
-		new HyperLinkControlExtension(linkElement).selectLink();
+		getControlExtensionFactory().getHyperLink(linkElement).selectLink();
 		return this;
 	}
 	
 	public String getLinkResultValue() {
-		return new HyperLinkControlExtension(resultText).getValue();
+		return getControlExtensionFactory().getHyperLink(resultText).getValue();
 	}
 }
