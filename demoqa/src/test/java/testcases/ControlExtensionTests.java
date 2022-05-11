@@ -2,11 +2,14 @@ package testcases;
 
 import static org.testng.Assert.assertEquals;
 
+import java.util.Iterator;
+
 import org.testng.annotations.Test;
 
 import framework.SeleniumTestBase;
 import page.buttonpage;
 import page.hyperlinkpage;
+import page.selectmenupage;
 import page.sliderpage;
 
 public class ControlExtensionTests extends SeleniumTestBase{
@@ -111,6 +114,35 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		
 		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
+	}
+	
+	@Test
+	public void selectMenuPurple() {
+		int actualColorIndex = 4;
+		int expectedColorIndex = new selectmenupage(this.getDriver())
+				.navigate()
+				.getSelectMenu()
+				.getSelectMenuValue();
+		
+		System.out.println(expectedColorIndex);
+		assertEquals(expectedColorIndex, actualColorIndex);
+	}
+	
+	@Test
+	public void getAllSelectMenuValue() {
+		String[] actualAllColorValueArray = {"Red","Blue","Green","Yellow","Purple","Black","White","Voilet","Indigo","Magenta","Aqua"};
+		String[] expectedAllColorValueArray = new selectmenupage(this.getDriver())
+				.navigate()
+				.getSelectMenu()
+				.getAllSelectMenuValue();
+		
+//		for (String color : expectedAllColorValueArray) {
+//			System.out.println(color);
+//		}
+		
+		assertEquals(expectedAllColorValueArray, actualAllColorValueArray);
+		
+	
 	}
 	
 	
