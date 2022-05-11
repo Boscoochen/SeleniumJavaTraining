@@ -72,7 +72,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int actualValue = 80;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.getSlider()
 				.setValue(actualValue)
 				.getValue();
 		
@@ -85,7 +84,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int actualValue = 17;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.getSlider()
 				.setValue(actualValue)
 				.getValue();
 		
@@ -98,7 +96,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int actualValue = 0;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.getSlider()
 				.setValue(actualValue)
 				.getValue();
 		
@@ -111,7 +108,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int actualValue = 100;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.getSlider()
 				.setValue(actualValue)
 				.getValue();
 		
@@ -124,7 +120,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int actualColorIndex = 4;
 		int expectedColorIndex = new selectmenupage(this.getDriver())
 				.navigate()
-				.getSelectMenu()
 				.selectColor()
 				.getSelectMenuValue();
 		
@@ -137,7 +132,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String[] actualAllColorValueArray = {"Red","Blue","Green","Yellow","Purple","Black","White","Voilet","Indigo","Magenta","Aqua"};
 		String[] expectedAllColorValueArray = new selectmenupage(this.getDriver())
 				.navigate()
-				.getSelectMenu()
 				.getAllSelectMenuValue();
 		
 //		for (String color : expectedAllColorValueArray) {

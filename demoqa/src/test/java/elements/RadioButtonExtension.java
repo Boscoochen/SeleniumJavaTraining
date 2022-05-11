@@ -9,11 +9,12 @@ public class RadioButtonExtension extends ControlExtensionBase {
 	public RadioButtonExtension(WebElement element) {
 		super(element);
 		// TODO Auto-generated constructor stub
+		this.wrappedElement = element;
 	}
 
 	
 	//need to change to select 
 	public void selectButton() {
-		super.wrappedElement.click();
+		this.wrappedElement.click();
 	}
 }

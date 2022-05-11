@@ -14,7 +14,9 @@ public class RadioGroup extends PageObjectBase {
 	
 	@FindBy(xpath="//*[@id=\"app\"]//div/label")
 	private List<WebElement> elements;
+	
 	WebElement getElement = null;
+	
 	public RadioGroup(WebDriver driver) {
 		super(driver);
 		// TODO Auto-generated constructor stub

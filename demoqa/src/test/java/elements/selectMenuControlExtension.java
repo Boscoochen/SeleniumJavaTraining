@@ -10,22 +10,23 @@ public class selectMenuControlExtension extends ControlExtensionBase {
 	public selectMenuControlExtension(WebElement element) {
 		super(element);
 		// TODO Auto-generated constructor stub
+		this.wrappedElement = element;
 	}
 
-	public static void selectColor(WebElement element) {
+	public void selectColor() {
 		// TODO Auto-generated method stub
-		Select select = new Select(element);
+		Select select = new Select(this.wrappedElement);
 		select.selectByValue("4");
 	}
 
-	public static int getColorValue(WebElement element) {
+	public int getColorValue() {
 		// TODO Auto-generated method stub
-		return Integer.parseInt(element.getAttribute("value"));
+		return Integer.parseInt(this.wrappedElement.getAttribute("value"));
 	}
 
-	public static String[] getAllColorValue(WebElement element) {
+	public String[] getAllColorValue() {
 		// TODO Auto-generated method stub
-		String colorValueArray[] = element.getText().split("\n");
+		String colorValueArray[] = this.wrappedElement.getText().split("\n");
 		return colorValueArray;
 	}
 
