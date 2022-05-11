@@ -1,7 +1,5 @@
 package page;
-
 import org.openqa.selenium.WebDriver;
-
 import elements.Slider;
 import framework.PageObjectBase;
 
@@ -16,5 +14,4 @@ public class sliderpage extends PageObjectBase{
 		super.getDriver().get(URL);
 		return new Slider(this.getDriver());
 	}
-
 }

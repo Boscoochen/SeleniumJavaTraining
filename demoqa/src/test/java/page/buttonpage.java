@@ -1,5 +1,4 @@
 package page;
-
 import org.openqa.selenium.WebDriver;
 import elements.RadioGroup;
 import framework.PageObjectBase;
@@ -14,5 +13,4 @@ public class buttonpage extends PageObjectBase{
 		super.getDriver().get(URL);
 		return new RadioGroup(this.getDriver());
 	}
-	
 }

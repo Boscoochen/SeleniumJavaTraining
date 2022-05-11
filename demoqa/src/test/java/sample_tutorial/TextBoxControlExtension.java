@@ -1,11 +1,9 @@
 package sample_tutorial;
-
 import org.openqa.selenium.WebElement;
 
 public class TextBoxControlExtension {
-
 	private WebElement wrappedElement;
-
+	
 	public TextBoxControlExtension(WebElement element) {
 		this.wrappedElement = element;
 	}
@@ -24,5 +22,4 @@ public class TextBoxControlExtension {
 		return this.wrappedElement.getAttribute("value");
 
 	}
-
 }

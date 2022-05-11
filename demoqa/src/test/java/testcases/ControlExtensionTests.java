@@ -1,11 +1,6 @@
 package testcases;
-
 import static org.testng.Assert.assertEquals;
-
-import java.util.Iterator;
-
 import org.testng.annotations.Test;
-
 import framework.SeleniumTestBase;
 import page.buttonpage;
 import page.hyperlinkpage;
@@ -62,7 +57,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.getLinkResultValue();
 		
 		assertEquals(expectedResultString, actualResult);
-
 	}
 	
 	@Test
@@ -73,7 +67,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.setValue(actualValue)
 				.getValue();
 		
-		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
 	}
 	
@@ -85,7 +78,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.setValue(actualValue)
 				.getValue();
 		
-		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
 	}
 	
@@ -97,7 +89,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.setValue(actualValue)
 				.getValue();
 		
-		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
 	}
 	
@@ -109,7 +100,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.setValue(actualValue)
 				.getValue();
 		
-		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
 	}
 	
@@ -121,7 +111,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.selectColor()
 				.getSelectMenuValue();
 		
-		System.out.println(expectedColorIndex);
 		assertEquals(expectedColorIndex, actualColorIndex);
 	}
 	

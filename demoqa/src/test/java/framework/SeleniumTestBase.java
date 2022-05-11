@@ -1,5 +1,4 @@
 package framework;
-
 import java.io.File;
 import java.util.concurrent.TimeUnit;
 
@@ -30,12 +29,10 @@ public abstract class SeleniumTestBase {
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
 	
-	
 	@AfterTest
 	public void cleanUp() {
 		if (this.driver != null) {
 			this.driver.quit();
 		}
 	}
-	
 }

@@ -1,15 +1,11 @@
 package elements;
-
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 import extensions.HyperLinkControlExtension;
 import framework.PageObjectBase;
 
 public class HyperLink extends PageObjectBase{
-	
 	@FindBy(id="unauthorized")
 	private WebElement linkElement;
 	
@@ -18,7 +14,6 @@ public class HyperLink extends PageObjectBase{
 	
 	public HyperLink(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	public HyperLink clickOnLink() {

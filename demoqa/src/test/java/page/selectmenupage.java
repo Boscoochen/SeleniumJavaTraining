@@ -1,14 +1,11 @@
 package page;
-
 import org.openqa.selenium.WebDriver;
-
 import elements.SelectMenu;
 import framework.PageObjectBase;
 
 public class selectmenupage extends PageObjectBase{
 	private static final String URL = "https://demoqa.com/select-menu";
 
-	
 	public selectmenupage(WebDriver driver) {
 		super(driver);
 	}
@@ -17,5 +14,4 @@ public class selectmenupage extends PageObjectBase{
 		super.getDriver().get(URL);
 		return new SelectMenu(this.getDriver());
 	}
-
 }
