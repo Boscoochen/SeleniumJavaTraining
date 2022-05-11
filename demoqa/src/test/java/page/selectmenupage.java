@@ -11,7 +11,6 @@ public class selectmenupage extends PageObjectBase{
 	
 	public selectmenupage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public SelectMenu navigate() {

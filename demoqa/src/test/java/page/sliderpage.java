@@ -10,7 +10,6 @@ public class sliderpage extends PageObjectBase{
 
 	public sliderpage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Slider navigate() {

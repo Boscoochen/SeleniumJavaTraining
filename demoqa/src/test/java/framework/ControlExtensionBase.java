@@ -9,7 +9,6 @@ public abstract class ControlExtensionBase{
 		this.wrappedElement = element;
 	}
 
-	//get the button value
 	public String getValue() {
 		return this.wrappedElement.getText();
 	}

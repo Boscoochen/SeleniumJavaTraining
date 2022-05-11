@@ -1,13 +1,10 @@
 package elements;
-
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Action;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
+import extensions.sliderControlExtension;
 import framework.PageObjectBase;
 
 public class Slider extends PageObjectBase{
@@ -19,7 +16,6 @@ public class Slider extends PageObjectBase{
 	
 	public Slider(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public Slider setValue(int value) {
@@ -30,7 +26,6 @@ public class Slider extends PageObjectBase{
 	
 	public int getValue() {
 		return new sliderControlExtension(sliderElement).getValue(sliderElement);
-//		return Integer.parseInt(element.getAttribute("value"));
 	}
  
 }

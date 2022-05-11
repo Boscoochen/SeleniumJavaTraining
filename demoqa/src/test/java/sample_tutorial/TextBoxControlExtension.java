@@ -1,4 +1,4 @@
-package sample;
+package sample_tutorial;
 
 import org.openqa.selenium.WebElement;
 

@@ -1,8 +1,6 @@
 package page;
 
 import org.openqa.selenium.WebDriver;
-
-import elements.RadioButton;
 import elements.RadioGroup;
 import framework.PageObjectBase;
 

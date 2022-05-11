@@ -35,8 +35,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.getButton(impressive)
 				.select()
 				.getSelected();
-		
-//		System.out.println(selectImpressive);
+
 		assertEquals(selectImpressive, impressive);
 	}
 	
@@ -49,8 +48,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.getButton(no)
 				.select()
 				.getSelected();
-		
-//		System.out.println(selectNo);
+
 		assertEquals(selectNo, no);
 	}
 	
@@ -68,7 +66,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	}
 	
 	@Test
-	public void selectSliderValueTo80() throws InterruptedException {
+	public void selectSliderValueTo80() {
 		int actualValue = 80;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
@@ -80,7 +78,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	}
 	
 	@Test
-	public void selectSliderValueTo17() throws InterruptedException {
+	public void selectSliderValueTo17() {
 		int actualValue = 17;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
@@ -92,7 +90,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	}
 	
 	@Test
-	public void selectSliderValueTo0() throws InterruptedException {
+	public void selectSliderValueTo0() {
 		int actualValue = 0;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
@@ -104,7 +102,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	}
 	
 	@Test
-	public void selectSliderValueTo100() throws InterruptedException {
+	public void selectSliderValueTo100() {
 		int actualValue = 100;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
@@ -134,14 +132,6 @@ public class ControlExtensionTests extends SeleniumTestBase{
 				.navigate()
 				.getAllSelectMenuValue();
 		
-//		for (String color : expectedAllColorValueArray) {
-//			System.out.println(color);
-//		}
-		
 		assertEquals(expectedAllColorValueArray, actualAllColorValueArray);
-		
-	
 	}
-	
-	
 }

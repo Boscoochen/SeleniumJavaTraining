@@ -1,11 +1,9 @@
 package elements;
-
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.Select;
 
+import extensions.selectMenuControlExtension;
 import page.selectmenupage;
 
 public class SelectMenu extends selectmenupage{
@@ -16,7 +14,6 @@ public class SelectMenu extends selectmenupage{
 	
 	public SelectMenu(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public SelectMenu selectColor() {

@@ -3,8 +3,6 @@ package framework;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
-import elements.ControlExtensionFactory;
-
 
 public abstract class PageObjectBase {
 	private WebDriver driver;

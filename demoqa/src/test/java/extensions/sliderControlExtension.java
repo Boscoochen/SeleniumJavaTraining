@@ -1,4 +1,4 @@
-package elements;
+package extensions;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +11,6 @@ public class sliderControlExtension extends ControlExtensionBase {
 	static Action action;
 	public sliderControlExtension(WebElement element) {
 		super(element);
-		// TODO Auto-generated constructor stub
 		this.wrappedElement = element;
 	}
 

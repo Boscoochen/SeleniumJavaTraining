@@ -10,7 +10,6 @@ public class hyperlinkpage extends PageObjectBase{
 
 	public hyperlinkpage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
 	}
 
 	public HyperLink navigate() {
