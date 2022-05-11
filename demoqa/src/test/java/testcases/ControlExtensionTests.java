@@ -73,7 +73,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
 				.getSlider()
-				.setValue(actualValue);
+				.setValue(actualValue)
+				.getValue();
 		
 		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
@@ -85,7 +86,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
 				.getSlider()
-				.setValue(actualValue);
+				.setValue(actualValue)
+				.getValue();
 		
 		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
@@ -97,7 +99,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
 				.getSlider()
-				.setValue(actualValue);
+				.setValue(actualValue)
+				.getValue();
 		
 		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
@@ -109,7 +112,8 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
 				.getSlider()
-				.setValue(actualValue);
+				.setValue(actualValue)
+				.getValue();
 		
 		System.out.println(expectedValue);
 		assertEquals(expectedValue, actualValue);
@@ -121,6 +125,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		int expectedColorIndex = new selectmenupage(this.getDriver())
 				.navigate()
 				.getSelectMenu()
+				.selectColor()
 				.getSelectMenuValue();
 		
 		System.out.println(expectedColorIndex);

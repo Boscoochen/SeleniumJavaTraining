@@ -22,25 +22,15 @@ public class Slider extends PageObjectBase{
 		return this;
 	}
 	
-	public int setValue(int value) throws InterruptedException {
-		Dimension sliderSize = element.getSize();
-		int sliderWidth = sliderSize.getWidth();
-		int xCoord = element.getLocation().getX();
-		Actions move = new Actions(this.getDriver());
+	public Slider setValue(int value) {
 		
-		if(value == 80) {
-			action = (Action) move.dragAndDropBy(element, 180, 0).build(); //80
-		}else if(value == 17) {
-			action = (Action) move.dragAndDropBy(element, -200, 0).build(); //17
-		}else if(value == 0) {
-			action = (Action) move.dragAndDropBy(element, -300, 0).build(); //0
-		}else if(value == 100) {
-			action = (Action) move.dragAndDropBy(element, 300, 0).build(); //100
-		}
-
-        action.perform();	
-
-        return Integer.parseInt(element.getAttribute("value"));
+		sliderControlExtension.setValue(value, this.getDriver(), element);
+		return this;
+	}
+	
+	public int getValue() {
+		return sliderControlExtension.getValue(element);
+//		return Integer.parseInt(element.getAttribute("value"));
 	}
  
 }

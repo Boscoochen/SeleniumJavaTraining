@@ -12,10 +12,9 @@ public class HyperLinkControlExtension extends ControlExtensionBase{
 	public HyperLinkControlExtension(WebElement element) {
 		super(element);
 		// TODO Auto-generated constructor stub
-		click();
 	}
 
-	public void click() {
+	public void selectLink() {
 		super.wrappedElement.click();
 	}
 	

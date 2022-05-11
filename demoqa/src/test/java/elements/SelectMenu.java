@@ -16,19 +16,21 @@ public class SelectMenu extends selectmenupage{
 	
 	public SelectMenu getSelectMenu() {
 		element = this.getDriver().findElement(By.id("oldSelectMenu"));
-		Select select = new Select(element);
-		select.selectByValue("4");
+		return this;
+	}
+	
+	public SelectMenu selectColor() {
+		selectMenuControlExtension.selectColor(element);
 		return this;
 	}
 	
 	
 	public int getSelectMenuValue() {
-		return Integer.parseInt(element.getAttribute("value"));
+		return selectMenuControlExtension.getColorValue(element);
 	}
 	
 	public String[] getAllSelectMenuValue() {
-		String colorValueArray[] = element.getText().split("\n");
-		return colorValueArray;
+		return selectMenuControlExtension.getAllColorValue(element);
 	}
 	
 
