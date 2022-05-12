@@ -17,7 +17,7 @@ public class RadioGroup extends buttonpage {
 	}
 
 	public RadioButton getButton(String label) {
-		this.getElement = getControlExtensionFactory().getRadioButton(this.getElement).findButton(label, elements, getDriver());
+		this.getElement = getControlExtensionFactory().getRadioButton(this.getElement).findButton(label, elements);
 		return new RadioButton(this.getDriver(), this.getElement);
 	}
 

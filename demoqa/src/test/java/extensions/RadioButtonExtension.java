@@ -31,15 +31,15 @@ public class RadioButtonExtension extends ControlExtensionBase {
 		}
 	}
 
-	public WebElement findButton(String label, List<WebElement> elements, WebDriver driver) {
-		if (!(label.equals("No") || label.equals("Yes") || label.equals("Impressive"))) {
-			throw new RuntimeException("the label + '" + label + "' could not found");
-		}
-
+	public WebElement findButton(String label, List<WebElement> elements) {
 		for (WebElement webElement : elements) {
 			if (label.equals(webElement.getText())) {
 				this.wrappedElement = webElement;
 			}
+		}
+		
+		if (this.wrappedElement == null) {
+			throw new RuntimeException("the label + '" + label + "' could not found");
 		}
 
 		return this.wrappedElement;

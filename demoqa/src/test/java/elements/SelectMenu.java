@@ -17,7 +17,7 @@ public class SelectMenu extends selectmenupage{
 	}
 	
 	public String getSelectMenuValue() {
-		return getControlExtensionFactory().getSelectMenu(selectMenuElement).getColorValue();
+		return getControlExtensionFactory().getSelectMenu(selectMenuElement).getValue();
 	}
 	
 	public String[] getAllSelectMenuValue() {

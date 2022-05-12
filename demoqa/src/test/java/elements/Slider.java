@@ -18,6 +18,6 @@ public class Slider extends sliderpage{
 	}
 	
 	public int getValue() {
-		return getControlExtensionFactory().getSlider(sliderElement).getValue(sliderElement);
+		return getControlExtensionFactory().getSlider(sliderElement).getIntValue();
 	}
 }
