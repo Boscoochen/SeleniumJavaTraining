@@ -8,10 +8,10 @@ public class HyperLinkControlExtension extends ControlExtensionBase{
 		this.wrappedElement = element;
 	}
 
-	public void selectLink(String linkName) {
+	public void click(String linkName) {
 		this.wrappedElement.click();
 		if(!linkName.equals(this.getValue())) {
-			throw new RuntimeException("Link not found");
+			throw new RuntimeException("Link not mactch");
 		}
 	}
 }

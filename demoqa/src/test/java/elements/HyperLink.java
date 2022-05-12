@@ -16,7 +16,7 @@ public class HyperLink extends hyperlinkpage{
 	}
 
 	public HyperLink clickOnLink(String linkName) {
-		getControlExtensionFactory().getHyperLink(linkElement).selectLink(linkName);
+		getControlExtensionFactory().getHyperLink(linkElement).click(linkName);
 		return this;
 	}
 	

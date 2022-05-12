@@ -15,7 +15,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String selectYes = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(yes)
-				.select("Yes")
+				.select()
 				.getSelected();
 				
 		assertEquals(selectYes, yes);
@@ -28,7 +28,7 @@ public class ControlExtensionTests extends SeleniumTestBase{
 		String selectImpressive = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(impressive)
-				.select("Impressive")
+				.select()
 				.getSelected();
 
 		assertEquals(selectImpressive, impressive);
@@ -37,14 +37,15 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	@Test
 	public void canSelectNoRadioButton() {
 		String no = "No";
+		String Acutalresult = "button is not clickable";
 		
 		String selectNo = new buttonpage(this.getDriver())
 				.navigate()
 				.getButton(no)
-				.select("No")
+				.select()
 				.getSelected();
 
-		assertEquals(selectNo, no);
+		assertEquals(selectNo, Acutalresult);
 	}
 	
 	@Test
@@ -61,46 +62,42 @@ public class ControlExtensionTests extends SeleniumTestBase{
 	
 	@Test
 	public void selectSliderValueTo80() {
-		int actualValue = 80;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.setValue(actualValue)
+				.setValue(80)
 				.getValue();
 		
-		assertEquals(expectedValue, actualValue);
+		assertEquals(expectedValue, 80);
 	}
 	
 	@Test
 	public void selectSliderValueTo17() {
-		int actualValue = 17;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.setValue(actualValue)
+				.setValue(17)
 				.getValue();
 		
-		assertEquals(expectedValue, actualValue);
+		assertEquals(expectedValue, 17);
 	}
 	
 	@Test
 	public void selectSliderValueTo0() {
-		int actualValue = 0;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.setValue(actualValue)
+				.setValue(0)
 				.getValue();
 		
-		assertEquals(expectedValue, actualValue);
+		assertEquals(expectedValue, 0);
 	}
 	
 	@Test
 	public void selectSliderValueTo100() {
-		int actualValue = 100;
 		int expectedValue = new sliderpage(this.getDriver())
 				.navigate()
-				.setValue(actualValue)
+				.setValue(100)
 				.getValue();
 		
-		assertEquals(expectedValue, actualValue);
+		assertEquals(expectedValue, 100);
 	}
 	
 	@Test
