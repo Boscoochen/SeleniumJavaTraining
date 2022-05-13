@@ -1,11 +1,19 @@
 
 
 import io.restassured.RestAssured;
+import io.restassured.common.mapper.TypeRef;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.Field;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.junit.Before;
 import org.junit.Test;
+
 
 //import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -118,10 +126,11 @@ public class RestAssured_ {
 				.response();
 		
 		String bodyAsString = response.getBody().asString();
-		System.out.println(bodyAsString);
+//		System.out.println(bodyAsString);
 		assertEquals(200, response.statusCode());
 //		System.out.println(response.jsonPath().getString("token"));
 //        assertEquals("QpwL5tke4Pnpja7X4", response.jsonPath().getString("token"));
+		assertEquals("morpheus2", response.jsonPath().getString("name"));
 	}
 
 	
@@ -138,10 +147,37 @@ public class RestAssured_ {
 				.extract()
 				.response();
 		
-		String bodyAsString = response.getBody().asString();
-		System.out.println(bodyAsString);
+//		String bodyAsString = response.getBody().asString();
+//		System.out.println(bodyAsString);
 		assertEquals(200, response.statusCode());
-//		System.out.println(response.jsonPath().getString("token"));
-//        assertEquals("QpwL5tke4Pnpja7X4", response.jsonPath().getString("token"));
+//		System.out.println(response.jsonPath().getString("name"));
+        assertEquals("morpheus2", response.jsonPath().getString("name"));
+	}
+	
+	@Test
+	public void deserializeDataIntoObject() {
+		 Object dataObject = 
+				given()
+				.contentType(ContentType.JSON)
+				.when()
+				.get("/api/users/2")
+				.as(new TypeRef<Object>() {}
+				);
+		System.out.println(dataObject);
+	}
+	
+	@Test
+	public void deserializeDataIntoCollection() {
+		Map<String, Object> dataObject = 
+				given()
+				.contentType(ContentType.JSON)
+				.when()
+				.get("/api/users?page=2")
+				.as(new TypeRef<Map<String,Object>>() {}
+				);
+		System.out.println(dataObject.get("per_page"));
 	}
 }
+
+
+
