@@ -11,9 +11,4 @@ public class ChromeDriverManager extends DriverManager {
 		super.setDriver(new ChromeDriver());
 		SetOptions();
 	}
-
-	@Override
-	public void quitDriver() {
-		super.getDriver().quit();
-	}
 }

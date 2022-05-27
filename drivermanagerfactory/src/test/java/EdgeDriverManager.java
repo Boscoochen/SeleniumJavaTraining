@@ -11,9 +11,4 @@ public class EdgeDriverManager extends DriverManager {
 		super.setDriver(new EdgeDriver());
 		SetOptions();
 	}
-
-	@Override
-	public void quitDriver() {
-		super.getDriver().quit();
-	}
 }

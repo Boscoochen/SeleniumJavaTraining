@@ -47,5 +47,9 @@ public abstract class DriverManager extends DriverManagerFactory {
 		return System.getProperty("os.name").toLowerCase();
 	}
 
-	public abstract void quitDriver();
+	public void quitDriver() {
+		if(this.driver != null) {
+			getDriver().quit();
+		}
+	}
 }
