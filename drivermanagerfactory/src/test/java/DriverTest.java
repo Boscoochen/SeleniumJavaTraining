@@ -1,24 +1,36 @@
+import java.io.IOException;
+
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
-public class DriverTest extends TestBase{
-	ChromeDriverManager chromeDriverManager;
-	EdgeDriverManager edgeDriverManager;
+import util.Setting;
+
+public class DriverTest extends TestBase {
+	private ChromeDriverManager chromeDriverManager;
+	private EdgeDriverManager edgeDriverManager;
+	private String browserType;
+	private String url;
+
 	@Test
-	public void getChromeDriverTest() {
-		chromeDriverManager = (ChromeDriverManager) new DriverManagerFactory().getManaDriver("chrome");
-		chromeDriverManager.createDriver().get("https://fanyi.baidu.com/");
+	public void getDriverTest() throws IOException {
+		browserType = Setting.readPropertiesFile("browserType").toLowerCase();
+		url = Setting.readPropertiesFile("Url").toLowerCase();
+
+		if (browserType.equals("chrome")) {
+			chromeDriverManager = (ChromeDriverManager) new DriverManagerFactory().getManaDriver(browserType);
+			chromeDriverManager.createDriver().load(url);
+		} else if (browserType.equals("edge")) {
+			edgeDriverManager = (EdgeDriverManager) new DriverManagerFactory().getManaDriver(browserType);
+			edgeDriverManager.createDriver().load(url);
+		}
 	}
-	
-	@Test
-	public void getEdgeDriverTest() {
-		edgeDriverManager = (EdgeDriverManager) new DriverManagerFactory().getManaDriver("edge");
-		edgeDriverManager.createDriver().get("https://fanyi.baidu.com/");
-	}
-	
+
 	@AfterTest
 	public void quitDriver() {
-		chromeDriverManager.quitDriver();
-		edgeDriverManager.quitDriver();
+		if (browserType.equals("chrome")) {
+			chromeDriverManager.quitDriver();
+		} else if (browserType.equals("edge")) {
+			edgeDriverManager.quitDriver();
+		}
 	}
 }
