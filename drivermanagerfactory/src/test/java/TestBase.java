@@ -1,15 +1,4 @@
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-
 public abstract class TestBase {
-	protected WebDriver driver;
-
-	protected void SetOptions() {
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-	}
-
 	protected String getDriverPath(String browserName) {
 		String path = null;
 		String osName = osName();

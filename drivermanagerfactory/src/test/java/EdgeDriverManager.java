@@ -9,13 +9,13 @@ public class EdgeDriverManager extends DriverManager {
 		File file = new File(driverPath);
 		String absolutePath = file.getAbsolutePath();
 		System.setProperty("webdriver.edge.driver", absolutePath);
-		driver = new EdgeDriver();
+		super.setDriver(new EdgeDriver());
 		SetOptions();
 		return this;
 	}
 
 	@Override
 	public void quitDriver() {
-		driver.quit();
+		super.getDriver().quit();
 	}
 }

@@ -8,13 +8,13 @@ public class ChromeDriverManager extends DriverManager {
 		File file = new File(driverPath);
 		String absolutePath = file.getAbsolutePath();
 		System.setProperty("webdriver.chrome.driver", absolutePath);
-		driver = new ChromeDriver();
+		super.setDriver(new ChromeDriver());
 		SetOptions();
 		return this;
 	}
 
 	@Override
 	public void quitDriver() {
-		driver.quit();
+		super.getDriver().quit();
 	}
 }
