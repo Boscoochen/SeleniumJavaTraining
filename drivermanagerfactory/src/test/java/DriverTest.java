@@ -1,34 +1,19 @@
-import java.io.IOException;
-
-import org.testng.annotations.AfterTest;
+import static org.testng.Assert.assertNotNull;
 import org.testng.annotations.Test;
-
-import util.Setting;
-
-public class DriverTest {
-	private DriverManagerFactory driverManagerFactory;
-	private String browserType;
-
+public class DriverTest extends TestBase{
+	/**
+	 * Change browserType=edge in config.properties before test
+	 */
 	@Test
-	public void getDriverTest() throws IOException {
-		browserType = Setting.readPropertiesFile("browserType").toLowerCase();
-		String url = Setting.readPropertiesFile("Url").toLowerCase();
-
-		if (browserType.equals("chrome")) {
-			driverManagerFactory = new DriverManagerFactory().getManaDriver(browserType);
-			((ChromeDriverManager) driverManagerFactory).createDriver().load(url);
-		} else if (browserType.equals("edge")) {
-			driverManagerFactory = new DriverManagerFactory().getManaDriver(browserType);
-			((EdgeDriverManager) driverManagerFactory).createDriver().load(url);
-		}
+	public void canLaunchEdgeDriver() {
+		assertNotNull(this.getEdgeDriverManager().getDriver(),"the webdriver should be launch in the super class.");
 	}
-
-	@AfterTest
-	public void quitDriver() {
-		if (browserType.equals("chrome")) {
-			((ChromeDriverManager) driverManagerFactory).quitDriver();
-		} else if (browserType.equals("edge")) {
-			((EdgeDriverManager) driverManagerFactory).quitDriver();
-		}
+	
+	/**
+	 * Change browserType=chrome in config.properties before test
+	 */
+	@Test
+	public void canLaunchChromeDriver() {
+		assertNotNull(this.getChromeDriverManager().getDriver(),"the chromedriver should be launch in the super class.");
 	}
 }
