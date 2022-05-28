@@ -3,29 +3,20 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
 
-public abstract class TestBase {
+public class TestBase {
 	private WebDriver driver;
 
-	@BeforeTest
 	public void LaunchWebDriver() {
+		System.out.println("in testbase");
 		String driverPath = getDriverPath();
 		File file = new File(driverPath);
 		String absolutePath = file.getAbsolutePath();
 		System.setProperty("webdriver.chrome.driver", absolutePath);
 		this.driver = new ChromeDriver();
-
 		SetOptions();
 	}
 
-	@AfterTest
-	public void cleanUp() {
-		if (this.getDriver() != null) {
-			this.getDriver().quit();
-		}
-	}
 
 	protected WebDriver getDriver() {
 		return this.driver;
