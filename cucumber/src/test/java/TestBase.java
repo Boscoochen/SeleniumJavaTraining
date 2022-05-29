@@ -1,33 +1,30 @@
 import java.io.File;
 import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestBase {
-	private WebDriver driver;
+	private static WebDriver driver;
 
-	public void LaunchWebDriver() {
-		System.out.println("in testbase");
+	public static void LaunchWebDriver() {
 		String driverPath = getDriverPath();
 		File file = new File(driverPath);
 		String absolutePath = file.getAbsolutePath();
 		System.setProperty("webdriver.chrome.driver", absolutePath);
-		this.driver = new ChromeDriver();
+		driver = new ChromeDriver();
 		SetOptions();
 	}
 
-
-	protected WebDriver getDriver() {
-		return this.driver;
+	public static WebDriver getDriver() {
+		return driver;
 	}
 
-	private void SetOptions() {
-		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);		
+	private static void SetOptions() {
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 	}
-	
-	private String getDriverPath() {
+
+	private static String getDriverPath() {
 		String path = null;
 		String osName = osName();
 		if (osName.equals("mac os x")) {
@@ -38,7 +35,7 @@ public class TestBase {
 		return path;
 	}
 
-	private String osName() {
+	private static String osName() {
 		return System.getProperty("os.name").toLowerCase();
 	}
 }
