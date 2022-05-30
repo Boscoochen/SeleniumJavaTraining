@@ -2,7 +2,6 @@ import io.restassured.RestAssured;
 import io.restassured.common.mapper.TypeRef;
 import static org.junit.Assert.*;
 import static org.testng.Assert.assertTrue;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import org.junit.Before;
@@ -119,66 +118,26 @@ public class RestAssured_ {
 
 	@Test
 	public void deserializeDataIntoObject() {
-		LinkedHashMap<String, Object> actuaLinkedHashMap = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap.put("id", 2);
-		actuaLinkedHashMap.put("email", "janet.weaver@reqres.in");
-		actuaLinkedHashMap.put("first_name", "Janet");
-		actuaLinkedHashMap.put("last_name", "Weaver");
-		actuaLinkedHashMap.put("avatar", "https://reqres.in/img/faces/2-image.jpg");
+		User user2 = new User(2, "janet.weaver@reqres.in", "Janet", "Weaver", "https://reqres.in/img/faces/2-image.jpg");
 
-		Map<String, Map<String, Object>> dataObject = 
+		Map<String, Object> dataObject = 
 				given()
 				.contentType(ContentType.JSON)
 				.when()
 				.get("/api/users/2")
-				.as(new TypeRef<Map<String, Map<String, Object>>>() {});
+				.as(new TypeRef<Map<String, Object>>() {});
 
-		assertEquals(actuaLinkedHashMap, dataObject.get("data"));
+		assertEquals(user2.toString(), dataObject.get("data").toString());
 	}
 
 	@Test
 	public void deserializeDataIntoCollection() {
-		LinkedHashMap<String, Object> actuaLinkedHashMap1 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap1.put("id", 7);
-		actuaLinkedHashMap1.put("email", "michael.lawson@reqres.in");
-		actuaLinkedHashMap1.put("first_name", "Michael");
-		actuaLinkedHashMap1.put("last_name", "Lawson");
-		actuaLinkedHashMap1.put("avatar", "https://reqres.in/img/faces/7-image.jpg");
-
-		LinkedHashMap<String, Object> actuaLinkedHashMap2 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap2.put("id", 8);
-		actuaLinkedHashMap2.put("email", "lindsay.ferguson@reqres.in");
-		actuaLinkedHashMap2.put("first_name", "Lindsay");
-		actuaLinkedHashMap2.put("last_name", "Ferguson");
-		actuaLinkedHashMap2.put("avatar", "https://reqres.in/img/faces/8-image.jpg");
-
-		LinkedHashMap<String, Object> actuaLinkedHashMap3 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap3.put("id", 9);
-		actuaLinkedHashMap3.put("email", "tobias.funke@reqres.in");
-		actuaLinkedHashMap3.put("first_name", "Tobias");
-		actuaLinkedHashMap3.put("last_name", "Funke");
-		actuaLinkedHashMap3.put("avatar", "https://reqres.in/img/faces/9-image.jpg");
-
-		LinkedHashMap<String, Object> actuaLinkedHashMap4 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap4.put("id", 10);
-		actuaLinkedHashMap4.put("email", "byron.fields@reqres.in");
-		actuaLinkedHashMap4.put("first_name", "Byron");
-		actuaLinkedHashMap4.put("last_name", "Fields");
-		actuaLinkedHashMap4.put("avatar", "https://reqres.in/img/faces/10-image.jpg");
-
-		LinkedHashMap<String, Object> actuaLinkedHashMap5 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap5.put("id", 11);
-		actuaLinkedHashMap5.put("email", "george.edwards@reqres.in");
-		actuaLinkedHashMap5.put("first_name", "George");
-		actuaLinkedHashMap5.put("last_name", "Edwards");
-		actuaLinkedHashMap5.put("avatar", "https://reqres.in/img/faces/11-image.jpg");
-
-		LinkedHashMap<String, Object> actuaLinkedHashMap6 = new LinkedHashMap<String, Object>();
-		actuaLinkedHashMap6.put("id", 12);
-		actuaLinkedHashMap6.put("email", "rachel.howell@reqres.in");
-		actuaLinkedHashMap6.put("first_name", "Rachel");
-		actuaLinkedHashMap6.put("last_name", "Howell");
-		actuaLinkedHashMap6.put("avatar", "https://reqres.in/img/faces/12-image.jpg");
+		User user7 = new User(7, "michael.lawson@reqres.in", "Michael", "Lawson", "https://reqres.in/img/faces/7-image.jpg");
+		User user8 = new User(8, "lindsay.ferguson@reqres.in", "Lindsay", "Ferguson", "https://reqres.in/img/faces/8-image.jpg");
+		User user9 = new User(9, "tobias.funke@reqres.in", "Tobias", "Funke", "https://reqres.in/img/faces/9-image.jpg");
+		User user10 = new User(10, "byron.fields@reqres.in", "Byron", "Fields", "https://reqres.in/img/faces/10-image.jpg");
+		User user11 = new User(11, "george.edwards@reqres.in", "George", "Edwards", "https://reqres.in/img/faces/11-image.jpg");
+		User user12 = new User(12, "rachel.howell@reqres.in", "Rachel", "Howell", "https://reqres.in/img/faces/12-image.jpg");
 
 		List<Map<String, Object>> dataObject = 
 				given()
@@ -188,12 +147,12 @@ public class RestAssured_ {
 				.then()
 				.extract()
 				.path("data");
-
-		assertEquals(actuaLinkedHashMap1, dataObject.get(0));
-		assertEquals(actuaLinkedHashMap2, dataObject.get(1));
-		assertEquals(actuaLinkedHashMap3, dataObject.get(2));
-		assertEquals(actuaLinkedHashMap4, dataObject.get(3));
-		assertEquals(actuaLinkedHashMap5, dataObject.get(4));
-		assertEquals(actuaLinkedHashMap6, dataObject.get(5));
+		
+		assertEquals(user7.toString(), dataObject.get(0).toString());
+		assertEquals(user8.toString(), dataObject.get(1).toString());
+		assertEquals(user9.toString(), dataObject.get(2).toString());
+		assertEquals(user10.toString(), dataObject.get(3).toString());
+		assertEquals(user11.toString(), dataObject.get(4).toString());
+		assertEquals(user12.toString(), dataObject.get(5).toString());
 	}
 }
