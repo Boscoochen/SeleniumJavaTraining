@@ -18,11 +18,11 @@ public abstract class TestBase {
 		if (browserType.equals("chrome")) {
 			this.chromeDriverManager = (ChromeDriverManager) DriverManagerFactory.getManaDriver(browserType);
 			this.chromeDriverManager.createDriver();
-			this.chromeDriverManager.loadWebsite(url);
+			this.chromeDriverManager.getDriver().get(url);
 		} else if (browserType.equals("edge")) {
 			this.edgeDriverManager = (EdgeDriverManager) DriverManagerFactory.getManaDriver(browserType);
 			this.edgeDriverManager.createDriver();
-			this.edgeDriverManager.loadWebsite(url);
+			this.edgeDriverManager.getDriver().get(url);
 		}
 	}
 	

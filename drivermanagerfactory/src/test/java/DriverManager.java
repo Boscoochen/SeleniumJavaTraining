@@ -19,10 +19,6 @@ public abstract class DriverManager extends DriverManagerFactory {
 	public void setDriver(WebDriver driver) {
 		this.driver = driver;
 	}
-	
-	public void loadWebsite(String webSite) {
-		this.driver.get(webSite);
-	}
 
 	public void quitDriver() {
 		if(this.driver != null) {
