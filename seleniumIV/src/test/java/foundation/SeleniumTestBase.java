@@ -1,55 +1,65 @@
 package foundation;
-
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import java.io.IOException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
+import util.Setting;
+
 public abstract class SeleniumTestBase {
-	private WebDriver driver;
-
+	private ChromeDriverManager chromeDriverManager;
+	private EdgeDriverManager edgeDriverManager;
+	private String browserType;
+	
 	@BeforeTest
-	public void LaunchWebDriver() {
-		String driverPath = getDriverPath();
-		File file = new File(driverPath);
-		String absolutePath = file.getAbsolutePath();
-		System.setProperty("webdriver.chrome.driver", absolutePath);
-		this.driver = new ChromeDriver();
+	public void setupApplication() throws IOException {
+		browserType = Setting.readPropertiesFile("browserType").toLowerCase();
 
-		SetOptions();
-	}
-
-	@AfterTest
-	public void cleanUp() {
-		if (this.getDriver() != null) {
-			this.getDriver().quit();
+		if (browserType.equals("chrome")) {
+			this.chromeDriverManager = (ChromeDriverManager) DriverManagerFactory.getManaDriver(browserType);
+			this.chromeDriverManager.createDriver();
+		} else if (browserType.equals("edge")) {
+			this.edgeDriverManager = (EdgeDriverManager) DriverManagerFactory.getManaDriver(browserType);
+			this.edgeDriverManager.createDriver();
 		}
 	}
-
-	protected WebDriver getDriver() {
-		return this.driver;
-	}
-
-	private void SetOptions() {
-		this.driver.manage().window().maximize();
-		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);		
+	
+	@AfterTest
+	public void closeApplication() {
+		if (browserType.equals("chrome")) {
+			this.chromeDriverManager.quitDriver();
+		} else if (browserType.equals("edge")) {
+			this.edgeDriverManager.quitDriver();
+		}
 	}
 	
-	private String getDriverPath() {
+	protected String getDriverPath(String browserName) {
 		String path = null;
 		String osName = osName();
 		if (osName.equals("mac os x")) {
-			path = "src/test/resources/chromedriver";
+			if (browserName.toLowerCase().equals("chrome")) {
+				path = "src/test/resources/chromedriver";
+			} else if (browserName.toLowerCase().equals("edge")) {
+				path = "src/test/resources/msedgedriver";
+			}
 		} else if (osName.equals("windows 11")) {
-			path = "src/test/resources/chromedriver.exe";
+			if (browserName.toLowerCase().equals("chrome")) {
+				path = "src/test/resources/chromedriver.exe";
+			} else if (browserName.toLowerCase().equals("edge")) {
+				path = "src/test/resources/msedgedriver.exe";
+			}
 		}
 		return path;
 	}
 
-	private String osName() {
+	protected String osName() {
 		return System.getProperty("os.name").toLowerCase();
+	}
+
+	public ChromeDriverManager getChromeDriverManager() {
+		return this.chromeDriverManager;
+	}
+
+	public EdgeDriverManager getEdgeDriverManager() {
+		return this.edgeDriverManager;
 	}
 }
