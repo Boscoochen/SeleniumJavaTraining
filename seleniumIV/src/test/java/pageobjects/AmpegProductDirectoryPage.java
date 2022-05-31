@@ -17,4 +17,10 @@ public class AmpegProductDirectoryPage extends PageObjectBase {
 		element.click();
 		return new AmpegProSeriesPage(super.getDriver());
 	}
+	
+	public AmpegClassicSeriesPage clickProductsCLASSICSERIESBassHeadsandEnclosuresButton() {
+		WebElement element = super.getDriver().findElement(By.xpath("//*[@id=\"productIndex\"]/table/tbody/tr[2]/td[1]"));
+		element.click();
+		return new AmpegClassicSeriesPage(super.getDriver());
+	}
 }
