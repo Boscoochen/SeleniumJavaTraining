@@ -1,10 +1,9 @@
 package foundation;
 
 import java.io.File;
-
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class ChromeDriverManager extends DriverManager{
+public class ChromeDriverManager extends DriverManager {
 	@Override
 	public void createDriver() {
 		String driverPath = super.getDriverPath("chrome");

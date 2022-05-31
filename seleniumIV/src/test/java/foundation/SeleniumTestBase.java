@@ -1,4 +1,5 @@
 package foundation;
+
 import java.io.IOException;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -9,7 +10,7 @@ public abstract class SeleniumTestBase {
 	private ChromeDriverManager chromeDriverManager;
 	private EdgeDriverManager edgeDriverManager;
 	private String browserType;
-	
+
 	@BeforeTest
 	public void setupApplication() throws IOException {
 		browserType = Setting.readPropertiesFile("browserType").toLowerCase();
@@ -22,7 +23,7 @@ public abstract class SeleniumTestBase {
 			this.edgeDriverManager.createDriver();
 		}
 	}
-	
+
 	@AfterTest
 	public void closeApplication() {
 		if (browserType.equals("chrome")) {
@@ -31,7 +32,7 @@ public abstract class SeleniumTestBase {
 			this.edgeDriverManager.quitDriver();
 		}
 	}
-	
+
 	protected String getDriverPath(String browserName) {
 		String path = null;
 		String osName = osName();

@@ -1,6 +1,6 @@
 package foundation;
 
-public class DriverManagerFactory extends SeleniumTestBase{
+public class DriverManagerFactory extends SeleniumTestBase {
 	public static DriverManager getManaDriver(String browserType) {
 		if (browserType.toLowerCase().equals("chrome")) {
 			return new ChromeDriverManager();

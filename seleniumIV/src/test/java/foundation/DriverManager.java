@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 
-public abstract class DriverManager extends DriverManagerFactory{
+public abstract class DriverManager extends DriverManagerFactory {
 	private WebDriver driver;
 
 	protected void SetOptions() {
@@ -23,7 +23,7 @@ public abstract class DriverManager extends DriverManagerFactory{
 	}
 
 	public void quitDriver() {
-		if(this.driver != null) {
+		if (this.driver != null) {
 			getDriver().quit();
 		}
 	}
