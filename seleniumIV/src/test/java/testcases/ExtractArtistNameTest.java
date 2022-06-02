@@ -21,16 +21,4 @@ public class ExtractArtistNameTest extends SeleniumTestBase{
 		
 		assertEquals(artistName, "Bootsy Collins");
 	}
-	
-	@Test
-	public void getArtistNameForProductSVT_410HLFEdgeVersionTest() throws IOException {
-		String artistName = new HomePage(super.getEdgeDriverManager().getDriver())
-				.navigateToHomePage()
-				.clickProductsButton()
-				.clickProductsCLASSICSERIESBassHeadsandEnclosuresButton()
-				.clickOnSVT410HLFProductLink()
-				.getArtistName();
-		
-		assertEquals(artistName, "Bootsy Collins");
-	}
 }

@@ -10,10 +10,11 @@ public abstract class SeleniumTestBase {
 	private ChromeDriverManager chromeDriverManager;
 	private EdgeDriverManager edgeDriverManager;
 	private String browserType;
+	private Setting setting = new Setting();
 
 	@BeforeTest
 	public void setupApplication() throws IOException {
-		browserType = Setting.readPropertiesFile("browserType").toLowerCase();
+		browserType = setting.readPropertiesFile("browserType").toLowerCase();
 
 		if (browserType.equals("chrome")) {
 			this.chromeDriverManager = (ChromeDriverManager) DriverManagerFactory.getManaDriver(browserType);

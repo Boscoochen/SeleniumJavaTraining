@@ -12,13 +12,15 @@ import util.Setting;
 public class HomePage extends PageObjectBase {
 	@FindBy(xpath = "//*[@id=\"global-topnav\"]/ul/li[1]/a")
 	private WebElement productsButtonElement;
+	private Setting setting;
 
 	public HomePage(WebDriver driver) {
 		super(driver);
+		setting = new Setting();
 	}
 
 	public HomePage navigateToHomePage() throws IOException {
-		String url = Setting.readPropertiesFile("url").toLowerCase();
+		String url = setting.readPropertiesFile("url").toLowerCase();
 		super.getDriver().get(url);
 		return this;
 	}

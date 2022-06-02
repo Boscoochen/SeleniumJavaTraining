@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="parallel test" parallel="tests" thread-count="2">
+    <test name="parallel1">
+        <classes>
+            <class name="testcases.ExtractArtistNameTest"></class>
+        </classes>
+    </test>
+    <test name="parallel2">
+        <classes>
+            <class name="testcases.NavigateToHomePageTest"></class>
+        </classes>
+    </test>
+</suite>

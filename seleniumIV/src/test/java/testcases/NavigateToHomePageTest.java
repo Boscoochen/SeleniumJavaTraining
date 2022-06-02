@@ -20,17 +20,4 @@ public class NavigateToHomePageTest extends SeleniumTestBase{
 		
 		assertEquals(url, "https://ampeg.com/index.html");
 	}
-	
-	@Test
-	public void navigateToHomePageEdgeVersionTest() throws IOException {
-		String url = new HomePage(super.getEdgeDriverManager().getDriver())
-				.navigateToHomePage()
-				.clickProductsButton()
-				.clickOnSVTPROSERIESBassHeadsProduct()
-				.clickOnSVT_3PROProduct()
-				.navigateToHomePage()
-				.getHomePageUrl();
-		
-		assertEquals(url, "https://ampeg.com/index.html");
-	}
 }
