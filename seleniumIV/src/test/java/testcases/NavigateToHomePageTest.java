@@ -9,8 +9,8 @@ import pageobjects.HomePage;
 
 public class NavigateToHomePageTest extends SeleniumTestBase{
 	@Test
-	public void navigateToHomePageChromeVersionTest() throws IOException {
-		String url = new HomePage(super.getChromeDriverManager().getDriver())
+	public void navigateToHomePageTest() throws IOException {
+		String url = new HomePage(super.getDriverManager().getDriver())
 				.navigateToHomePage()
 				.clickProductsButton()
 				.clickOnSVTPROSERIESBassHeadsProduct()

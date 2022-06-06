@@ -11,8 +11,8 @@ import pageobjects.HomePage;
 
 public class ExtractArtistNameTest extends SeleniumTestBase{
 	@Test
-	public void getArtistNameForProductSVT_410HLFChromeVersionTest() throws IOException {
-		String artistName = new HomePage(super.getChromeDriverManager().getDriver())
+	public void getArtistNameForProductSVT_410HLFTest() throws IOException {
+		String artistName = new HomePage(super.getDriverManager().getDriver())
 				.navigateToHomePage()
 				.clickProductsButton()
 				.clickProductsCLASSICSERIESBassHeadsandEnclosuresButton()

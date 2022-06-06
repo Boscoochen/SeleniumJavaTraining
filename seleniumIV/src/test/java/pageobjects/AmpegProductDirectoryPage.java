@@ -7,10 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import foundation.PageObjectBase;
 
 public class AmpegProductDirectoryPage extends PageObjectBase {
-	@FindBy(xpath = "//*[@id=\"productIndex\"]/table/tbody/tr[2]/td[3]")
+	@FindBy(xpath = "//*[@id=\"productIndex\"]//*[@class=\"borderBottom\"]//*[@href=\"/products/pro/\"]")
 	private WebElement sVTPROSERIESBassHeadsProductElement;
 
-	@FindBy(xpath = "//*[@id=\"productIndex\"]/table/tbody/tr[2]/td[1]")
+	@FindBy(xpath = "//*[@id=\"productIndex\"]//*[@class=\"borderRight\"]//*[@href=\"/products/classic/\"]")
 	private WebElement cLASSICSERIESBassHeadsandEnclosuresButtonElement;
 
 	public AmpegProductDirectoryPage(WebDriver driver) {

@@ -10,7 +10,7 @@ import foundation.PageObjectBase;
 import util.Setting;
 
 public class HomePage extends PageObjectBase {
-	@FindBy(xpath = "//*[@id=\"global-topnav\"]/ul/li[1]/a")
+	@FindBy(xpath = "//*[@id=\"global-topnav\"]//*[@class=\"main-item products\"]")
 	private WebElement productsButtonElement;
 	private Setting setting;
 

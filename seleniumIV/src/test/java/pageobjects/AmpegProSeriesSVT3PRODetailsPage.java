@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import foundation.PageObjectBase;
 
 public class AmpegProSeriesSVT3PRODetailsPage extends PageObjectBase {
-	@FindBy(xpath = "//*[@id=\"navLinks\"]/a[1]")
+	@FindBy(xpath = "//*[@id=\"navLinks\"]//*[@href=\"/\"]")
 	private WebElement homePageElement;
 
 	public AmpegProSeriesSVT3PRODetailsPage(WebDriver driver) {

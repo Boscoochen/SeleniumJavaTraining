@@ -7,7 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import foundation.PageObjectBase;
 
 public class AmpegProSeriesPage extends PageObjectBase {
-	@FindBy(xpath = "//*[@id=\"seriesHome\"]/table/tbody/tr[1]/td[1]/a")
+	@FindBy(xpath = "//*[@id=\"seriesHome\"]//*[@href=\"svt3pro/\"]")
 	private WebElement sVT_3PROProductElement;
 
 	public AmpegProSeriesPage(WebDriver driver) {
