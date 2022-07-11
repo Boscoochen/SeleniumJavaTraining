@@ -13,7 +13,7 @@ public class SqlStatementTests {
 				"Zanzibar", "Zalantun", "Yuzhou" };
 
 		ArrayList<String> expectedResult = new ExecuteSql().selectSql(sql);
-
+		
 		assertEquals(actualResult, expectedResult.toArray());
 	}
 
