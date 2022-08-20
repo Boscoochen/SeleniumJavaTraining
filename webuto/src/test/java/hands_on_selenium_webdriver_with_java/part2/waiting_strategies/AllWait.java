@@ -17,18 +17,22 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 public class AllWait {
 	WebDriver chromeDriver;
 	@BeforeTest
 	public void setUpChromeDriver() {
-		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+//		System.setProperty("webdriver.chrome.driver", "src/test/resources/chromedriver");
+//		chromeDriver = new ChromeDriver();
+		WebDriverManager.chromedriver().setup();
 		chromeDriver = new ChromeDriver();
 	}
 	
 	@Test
 	public void testImplicaitWait() {
 		chromeDriver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
-		chromeDriver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		chromeDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		WebElement landscapElement = chromeDriver.findElement(By.id("landscape"));
 		assertTrue(landscapElement.getAttribute("src").contains("landscape.png"));
 	}
@@ -36,7 +40,7 @@ public class AllWait {
 	@Test
 	public void testExplicitWait() {
 		chromeDriver.get("https://bonigarcia.dev/selenium-webdriver-java/loading-images.html");
-		WebDriverWait wait = new WebDriverWait(chromeDriver, 10);
+		WebDriverWait wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(10));
 		WebElement landscapElement = wait.until(ExpectedConditions.presenceOfElementLocated(By.id("landscape")));
 		assertTrue(landscapElement.getAttribute("src").contains("landscape"));
 	}
@@ -52,7 +56,7 @@ public class AllWait {
 		chromeDriver.findElement(By.xpath("//span[text()='=']")).click();
 		
 		// ... should be 4, wait for it
-		WebDriverWait wait = new WebDriverWait(chromeDriver, 10);
+		WebDriverWait wait = new WebDriverWait(chromeDriver, Duration.ofSeconds(10));
 		wait.until(ExpectedConditions.textToBe(By.className("screen"), "4"));
 	}
 	
