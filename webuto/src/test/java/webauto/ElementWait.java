@@ -1,5 +1,6 @@
 package webauto;
 
+import java.time.Duration;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -17,7 +18,7 @@ public class ElementWait {
 		chromeDriver.findElement(By.id("kw")).sendKeys("腾讯课程");
 		chromeDriver.findElement(By.id("su")).click();
 		//Thread.sleep(3000);
-		WebDriverWait webDriverWait = new WebDriverWait(chromeDriver, 5);
+		WebDriverWait webDriverWait = new WebDriverWait(chromeDriver, Duration.ofSeconds(5));
 		webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[text()='-综合性在线终身学习平台']")));
 		chromeDriver.findElement(By.xpath("//a[text()='-综合性在线终身学习平台']")).click();
 	}

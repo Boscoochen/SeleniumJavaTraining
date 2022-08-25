@@ -34,7 +34,6 @@ public class HelloWorldChromeTestNGTest {
 		String sutUrl = "http://bonigarcia.dev/selenium-webdriver-java/";
 		driver.get(sutUrl);
 		String title = driver.getTitle();
-		System.out.println(log);
 		log.debug("The title of {} is {}", sutUrl, title);
 		assertEquals(title, "Hands-On Selenium WebDriver with Java");
 	}

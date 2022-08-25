@@ -4,13 +4,13 @@
   <artifactId>webuto</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <dependencies>
-	  <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-	<dependency>
-	    <groupId>org.seleniumhq.selenium</groupId>
-	    <artifactId>selenium-java</artifactId>
-	    <version>4.0.0</version>
-	</dependency>
-  
+<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+<dependency>
+    <groupId>org.seleniumhq.selenium</groupId>
+    <artifactId>selenium-java</artifactId>
+    <version>4.4.0</version>
+</dependency>
+
 	
 	
 	<!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
@@ -21,20 +21,22 @@
 	</dependency>
 
 	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-api</artifactId>
-	    <version>1.7.36</version>
+	    <version>2.0.0</version>
 	</dependency>
+
 	
-	<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-simple -->
 	<dependency>
 	    <groupId>org.slf4j</groupId>
 	    <artifactId>slf4j-simple</artifactId>
-	    <version>1.7.36</version>
+	    <version>2.0.0</version>
 	    <scope>test</scope>
 	</dependency>
+
 	
 	
 	<!-- https://mvnrepository.com/artifact/org.assertj/assertj-core -->
