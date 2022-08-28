@@ -10,37 +10,45 @@ import java.util.List;
 import java.util.Set;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
+import org.openqa.selenium.Point;
 import org.openqa.selenium.ScriptKey;
 import org.openqa.selenium.ScriptTimeoutException;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriver.Options;
+import org.openqa.selenium.WebDriver.Window;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WindowType;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 
-import org.slf4j.Logger;
-import org.slf4j.event.Level;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
+import org.slf4j.*;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
-import static org.slf4j.LoggerFactory.getLogger;
-import static java.lang.invoke.MethodHandles.lookup;
 
 public class BrowserAgnosticFeatures {
 	WebDriver driver;
 	
-	static final Logger log = getLogger(lookup().lookupClass());
-
+	private static final Logger log = LoggerFactory.getLogger(BrowserAgnosticFeatures.class);
     
 	@BeforeMethod
 	void setup() {
@@ -186,9 +194,175 @@ public class BrowserAgnosticFeatures {
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		
 		String screenshot = ts.getScreenshotAs(OutputType.BASE64);
-		log.debug("Screenshot in base64 "
-				+ "(you can copy and paste it into a browser navigation bar to watch it)\n"
-				+ "data:image/png;base64,{}", screenshot);
+		if (log.isDebugEnabled()) {
+			log.debug("Screenshot in base64 "
+					+ "(you can copy and paste it into a browser navigation bar to watch it)\n"
+					+ "data:image/png;base64,{}", screenshot);
+		} else {
+			System.out.println("log is not working");
+		}
+		
 		assertThat(screenshot).isNotEmpty();
+	}
+	
+	@Test
+	void testWebElementScreenshot() throws IOException {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+		
+		WebElement form = driver.findElement(By.tagName("form"));
+		File screenshot = form.getScreenshotAs(OutputType.FILE);
+		Path destination = Paths.get("webelement-screen.png");
+		Files.move(screenshot.toPath(), destination, REPLACE_EXISTING);
+		assertThat(destination).exists();
+	}
+	
+	@Test
+	void testWindow() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
+		
+		Window window = driver.manage().window();
+		
+		Point initialPosition = window.getPosition();
+		Dimension initialSize = window.getSize();
+		
+		window.maximize();
+		
+		Point maximizedPosition = window.getPosition();
+		Dimension maximizeSize = window.getSize();
+		
+		assertThat(initialPosition).isNotEqualTo(maximizedPosition);
+		assertThat(initialSize).isNotEqualTo(maximizeSize);
+	}
+	
+	@Test
+	void testHistory() {
+		String baseUrl = "https://bonigarcia.dev/selenium-webdriver-java/";
+		String firstPage = baseUrl + "navigation1.html";
+		String secondPage = baseUrl + "navigation2.html";
+		String thirdPage = baseUrl + "navigation3.html";
+		
+		driver.get(firstPage);
+		
+		driver.navigate().to(secondPage);
+		driver.navigate().to(thirdPage);
+		driver.navigate().back();
+		driver.navigate().forward();
+		driver.navigate().refresh();
+		
+		assertThat(driver.getCurrentUrl()).isEqualTo(thirdPage);
+	}
+	
+	@Test
+	void testShadowDom() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/shadow-dom.html");
+		WebElement content = driver.findElement(By.id("content"));
+		SearchContext shadowRoot = content.getShadowRoot();
+		WebElement textElement = shadowRoot.findElement(By.cssSelector("p"));
+		assertThat(textElement.getText()).contains("Hello Shadow DOM");
+	}
+	
+	@Test
+	void testReadCookies() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
+		Options options = driver.manage();
+		Set<Cookie> cookies = options.getCookies();
+		assertThat(cookies).hasSize(2);
+		
+		Cookie username = options.getCookieNamed("username");
+		System.out.println(username);
+		assertThat(username.getValue()).isEqualTo("John Doe");
+		assertThat(username.getPath()).isEqualTo("/");
+		
+		driver.findElement(By.id("refresh-cookies")).click();
+	}
+	
+	@Test
+	void testAddCookies() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
+		
+		Options options = driver.manage();
+		Cookie newCookie = new Cookie("new-cookie-key", "new-cookie-value");
+		options.addCookie(newCookie);
+		String readValue = options.getCookieNamed(newCookie.getName()).getValue();
+		assertThat(newCookie.getValue()).isEqualTo(readValue);
+		driver.findElement(By.id("refresh-cookies")).click();
+	}
+	
+	@Test
+	void testEditCookie() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
+		Options options = driver.manage();
+		Cookie username = options.getCookieNamed("username");
+		Cookie editCookie = new Cookie(username.getName(), "new-value");
+		options.addCookie(editCookie);
+		
+		Cookie readCookie = options.getCookieNamed(username.getName());
+		assertThat(editCookie).isEqualTo(readCookie);
+		
+		driver.findElement(By.id("refresh-cookies")).click();
+	}
+	
+	@Test
+	void testDeleteCookies() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/cookies.html");
+		
+		Options options = driver.manage();
+		Set<Cookie> cookies = options.getCookies();
+		Cookie username = options.getCookieNamed("username");
+		options.deleteCookie(username);
+		
+		assertThat(options.getCookies()).hasSize(cookies.size() - 1);
+		driver.findElement(By.id("refresh-cookies")).click();
+	}
+	
+	@Test
+	void test() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+		Select select = new Select(driver.findElement(By.name("my-select")));
+		String optionLabel = "Three";
+		select.selectByVisibleText(optionLabel);
+		
+		assertThat(select.getFirstSelectedOption().getText()).isEqualTo(optionLabel);
+	}
+	
+	@Test
+	void testDatalist() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+		WebElement datalist = driver.findElement(By.name("my-datalist"));
+		datalist.click();
+		
+		WebElement option = driver.findElement(By.xpath("//datalist/option[2]"));
+		String optionValue = option.getAttribute("value");
+		datalist.sendKeys(optionValue);
+		
+		assertThat(optionValue).isEqualTo("New York");
+	}
+	
+	@Test
+	void testNewTab() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
+		String initHandle = driver.getWindowHandle();
+		
+		driver.switchTo().newWindow(WindowType.TAB);
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+		assertThat(driver.getWindowHandles().size()).isEqualTo(2);
+		
+		driver.switchTo().window(initHandle);
+		driver.close();
+		assertThat(driver.getWindowHandles().size()).isEqualTo(1);
+	}
+	
+	@Test
+	void testNewWindow() {
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/");
+		String initHandle = driver.getWindowHandle();
+		
+		driver.switchTo().newWindow(WindowType.WINDOW);
+		driver.get("https://bonigarcia.dev/selenium-webdriver-java/web-form.html");
+		assertThat(driver.getWindowHandles().size()).isEqualTo(2);
+		
+		driver.switchTo().window(initHandle);
+		driver.close();
+		assertThat(driver.getWindowHandles().size()).isEqualTo(1);
 	}
 }
